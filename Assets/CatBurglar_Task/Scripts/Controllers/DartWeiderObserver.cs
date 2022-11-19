@@ -5,7 +5,7 @@ public class DartWeiderObserver : MonoBehaviour
 {
     private const string DartWeiderName = CharactersNames.DartWeider;
 
-    [SerializeField] private ImperialMarchPlayer _loudSpeaker;
+    [SerializeField] private AlarmPlayer _loudSpeaker;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

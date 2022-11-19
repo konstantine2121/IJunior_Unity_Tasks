@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class ImperialMarchPlayer : MonoBehaviour
+public class AlarmPlayer : MonoBehaviour
 {
     public const float MinVolume = 0;
     public const float MaxVolume = 1;
