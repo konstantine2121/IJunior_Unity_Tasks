@@ -5,9 +5,12 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private int _rightLevelEdge = 20;
+    
     [SerializeField] private float _speed;
+
     private bool _stop = false;
-   private Rigidbody2D rigidbody;
+    
+    private Rigidbody2D rigidbody;
 
     private void Start()
     {

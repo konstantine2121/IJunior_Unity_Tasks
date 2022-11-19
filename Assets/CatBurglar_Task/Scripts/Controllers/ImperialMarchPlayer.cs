@@ -20,14 +20,12 @@ public class ImperialMarchPlayer : MonoBehaviour
 
     public void Play()
     {
-        Debug.Log("enter");
         _audioSource.Play();
         StartCoroutine(IncreaseMusicVolume());
     }
 
     public void Stop()
     {
-        Debug.Log("exit");
         StartCoroutine(DecreaseMusicVolume());
     }
 
@@ -35,13 +33,7 @@ public class ImperialMarchPlayer : MonoBehaviour
     {
         while (_audioSource.volume < MaxVolume)
         {
-            var nextValue = _audioSource.volume + _increaseRate;
-            if (nextValue > MaxVolume)
-            {
-                nextValue = MaxVolume;
-            }
-
-            _audioSource.volume = nextValue;
+            _audioSource.volume = GetNextVolumeValue(true);
 
             yield return new WaitForSeconds(CoroutineDelay);
         }
@@ -50,22 +42,35 @@ public class ImperialMarchPlayer : MonoBehaviour
     private IEnumerator DecreaseMusicVolume()
     {
         while (_audioSource.volume > MinVolume)
-        {
-            var nextValue = _audioSource.volume - _increaseRate;
-            if (nextValue < MinVolume)
-            {
-                nextValue = MinVolume;
-            }
+        {            
+            _audioSource.volume = GetNextVolumeValue(false);
 
-            _audioSource.volume = nextValue;
-
-            if (nextValue == MinVolume)
+            if (_audioSource.volume == MinVolume)
             {
                 _audioSource.Stop();
             }
 
             yield return new WaitForSeconds(CoroutineDelay);
         }
+    }
+
+    private float GetNextVolumeValue(bool increase)
+    {
+        var nextValue = increase ?
+            _audioSource.volume + _increaseRate :
+            _audioSource.volume - _increaseRate;
+
+        if (nextValue > MaxVolume)
+        {
+            nextValue = MaxVolume;
+        }
+
+        if (nextValue < MinVolume)
+        {
+            nextValue = MinVolume;
+        }
+
+        return nextValue;
     }
 
 }
