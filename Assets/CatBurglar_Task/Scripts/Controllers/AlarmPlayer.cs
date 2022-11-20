@@ -21,37 +21,32 @@ public class AlarmPlayer : MonoBehaviour
     public void Play()
     {
         _audioSource.Play();
-        StartCoroutine(IncreaseMusicVolume());
+        StartCoroutine(ChangeMusicVolume(true));
     }
 
     public void Stop()
     {
-        StartCoroutine(DecreaseMusicVolume());
+        StartCoroutine(ChangeMusicVolume(false));
     }
 
-    private IEnumerator IncreaseMusicVolume()
+    private IEnumerator ChangeMusicVolume(bool increase)
     {
-        while (_audioSource.volume < MaxVolume)
+        var delay = new WaitForSeconds(CoroutineDelay);
+
+        do
         {
-            _audioSource.volume = GetNextVolumeValue(true);
+            _audioSource.volume = GetNextVolumeValue(increase);
 
-            yield return new WaitForSeconds(CoroutineDelay);
+            yield return delay;
+        } 
+        while (_audioSource.volume < MaxVolume &&
+            _audioSource.volume > MinVolume);
+
+        if (_audioSource.volume == MinVolume)
+        {
+            _audioSource.Stop();
         }
-    }
 
-    private IEnumerator DecreaseMusicVolume()
-    {
-        while (_audioSource.volume > MinVolume)
-        {            
-            _audioSource.volume = GetNextVolumeValue(false);
-
-            if (_audioSource.volume == MinVolume)
-            {
-                _audioSource.Stop();
-            }
-
-            yield return new WaitForSeconds(CoroutineDelay);
-        }
     }
 
     private float GetNextVolumeValue(bool increase)

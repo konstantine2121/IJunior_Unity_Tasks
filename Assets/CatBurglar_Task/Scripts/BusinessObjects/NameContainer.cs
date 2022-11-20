@@ -10,7 +10,7 @@ public class NameContainer : MonoBehaviour
 
         if (gameObject == null)
         {
-            return false;
+            return false;           
         }
 
         var nameContainer = gameObject.GetComponent<NameContainer>();
