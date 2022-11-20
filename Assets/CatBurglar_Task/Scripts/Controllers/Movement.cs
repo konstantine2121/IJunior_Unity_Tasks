@@ -1,35 +1,39 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(BoxCollider2D))]
-public class Movement : MonoBehaviour
+namespace CatBurglar_Task
 {
-    [SerializeField] private int _rightLevelEdge = 20;
-    
-    [SerializeField] private float _speed;
 
-    private bool _stop = false;
-    
-    private Rigidbody2D rigidbody;
-
-    private void Start()
+    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(BoxCollider2D))]
+    public class Movement : MonoBehaviour
     {
-        rigidbody = GetComponent<Rigidbody2D>();
-        rigidbody.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-    }
+        [SerializeField] private int _rightLevelEdge = 20;
 
-    private void FixedUpdate()
-    {
-        if (!_stop)
+        [SerializeField] private float _speed;
+
+        private bool _stop = false;
+
+        private Rigidbody2D rigidbody;
+
+        private void Start()
         {
-            transform.Translate(Time.fixedDeltaTime * _speed, 0, 0);
+            rigidbody = GetComponent<Rigidbody2D>();
+            rigidbody.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         }
 
-        if (transform.position.x > _rightLevelEdge)
+        private void FixedUpdate()
         {
-            _stop = true;
+            if (!_stop)
+            {
+                transform.Translate(Time.fixedDeltaTime * _speed, 0, 0);
+            }
+
+            if (transform.position.x > _rightLevelEdge)
+            {
+                _stop = true;
+            }
         }
+
+
     }
-
-
 }

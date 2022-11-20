@@ -1,4 +1,7 @@
-public class CharactersNames
+namespace CatBurglar_Task
 {
-    public const string DartWeider = "DartWeider";
+    public class CharactersNames
+    {
+        public const string DartWeider = "DartWeider";
+    }
 }
