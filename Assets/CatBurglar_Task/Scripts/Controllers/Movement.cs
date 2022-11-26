@@ -13,12 +13,12 @@ namespace CatBurglar_Task
 
         private bool _stop = false;
 
-        private Rigidbody2D rigidbody;
+        private Rigidbody2D _rigidbody;
 
         private void Start()
         {
-            rigidbody = GetComponent<Rigidbody2D>();
-            rigidbody.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+            _rigidbody = GetComponent<Rigidbody2D>();
+            _rigidbody.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         }
 
         private void FixedUpdate()

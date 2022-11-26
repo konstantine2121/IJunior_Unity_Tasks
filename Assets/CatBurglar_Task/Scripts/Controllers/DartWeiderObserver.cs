@@ -5,7 +5,7 @@ namespace CatBurglar_Task
     [RequireComponent(typeof(BoxCollider2D))]
     public class DartWeiderObserver : MonoBehaviour
     {        
-        [SerializeField] private AlarmPlayer _loudSpeaker;
+        [SerializeField] private Alarm _loudSpeaker;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {

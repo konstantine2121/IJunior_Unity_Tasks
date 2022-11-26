@@ -5,7 +5,7 @@ namespace CatBurglar_Task
 {
 
     [RequireComponent(typeof(AudioSource))]
-    public class AlarmPlayer : MonoBehaviour
+    public class Alarm : MonoBehaviour
     {
         public const float MinVolume = 0;
         public const float MaxVolume = 1;
@@ -24,26 +24,25 @@ namespace CatBurglar_Task
         public void Play()
         {
             _audioSource.Play();
-            StartCoroutine(ChangeMusicVolume(true));
+            StartCoroutine(ChangeMusicVolume(MaxVolume));
         }
 
         public void Stop()
         {
-            StartCoroutine(ChangeMusicVolume(false));
+            StartCoroutine(ChangeMusicVolume(MinVolume));
         }
 
-        private IEnumerator ChangeMusicVolume(bool increase)
+        private IEnumerator ChangeMusicVolume(float targetVolume)
         {
             var delay = new WaitForSeconds(CoroutineDelay);
-
+            
             do
             {
-                _audioSource.volume = GetNextVolumeValue(increase);
+                _audioSource.volume = Mathf.MoveTowards(_audioSource.volume, targetVolume, _increaseRate);
 
                 yield return delay;
             }
-            while (_audioSource.volume < MaxVolume &&
-                _audioSource.volume > MinVolume);
+            while (_audioSource.volume != targetVolume);
 
             if (_audioSource.volume == MinVolume)
             {
@@ -51,25 +50,5 @@ namespace CatBurglar_Task
             }
 
         }
-
-        private float GetNextVolumeValue(bool increase)
-        {
-            var nextValue = increase ?
-                _audioSource.volume + _increaseRate :
-                _audioSource.volume - _increaseRate;
-
-            if (nextValue > MaxVolume)
-            {
-                nextValue = MaxVolume;
-            }
-
-            if (nextValue < MinVolume)
-            {
-                nextValue = MinVolume;
-            }
-
-            return nextValue;
-        }
-
     }
 }
