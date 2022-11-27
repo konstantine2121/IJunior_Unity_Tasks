@@ -57,6 +57,7 @@ namespace SpawnEnemies_Task
 
             var position = _spawns[_currentIndex].transform.position;
             position.y += VerticalOffset;
+
             Instantiate(_trooper, position, Quaternion.identity);
             IncrementIndex();
         }
