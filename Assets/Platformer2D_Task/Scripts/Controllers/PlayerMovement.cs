@@ -12,6 +12,7 @@ namespace Platformer2D_Task
     [RequireComponent(typeof(SpriteRenderer))]
     public class PlayerMovement : MonoBehaviour
     {
+        private const int CollidersToCheckNumber = 128;
         private const float JumpForce = 6.5f;
         private const string JumpButton = "Jump";
 
@@ -136,7 +137,14 @@ namespace Platformer2D_Task
         {
             _jumpEnable = false;
 
-            State = PlayerState.Jump;
+            var colliders = new ContactPoint2D[CollidersToCheckNumber];
+            var number = _rigidbody.GetContacts(colliders);//Ётот подход не работает((
+            //ѕерса как будто бы подкидывает в воздух и он никаких коллайдеров не касаетс€.
+
+            if (number == 0)
+            {
+                State = PlayerState.Jump;
+            }
         }
 
         private bool CheckTheFloor(Collision2D collision)
@@ -144,7 +152,7 @@ namespace Platformer2D_Task
             const float delta = 0.05f;
 
             var bounds = _boxCollider.bounds;
-            var bottom = bounds.center.y - bounds.extents.y;
+            var bottom = bounds.center.y - bounds.extents.y - _boxCollider.edgeRadius;
 
             var contacts = new List<ContactPoint2D>();
             collision.GetContacts(contacts);
