@@ -26,9 +26,6 @@ namespace Platformer2D_Task
             set { SetBoolValue(JumpParam, value); }
         }
 
-        //private 
-        //RuntimeAnimatorController _controller;
-
         private void Awake()
         {
             _movement = GetComponent<PlayerMovement>();

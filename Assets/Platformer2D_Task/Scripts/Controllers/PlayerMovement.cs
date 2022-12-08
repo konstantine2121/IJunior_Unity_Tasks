@@ -12,7 +12,6 @@ namespace Platformer2D_Task
     [RequireComponent(typeof(SpriteRenderer))]
     public class PlayerMovement : MonoBehaviour
     {
-        private const int CollidersToCheckNumber = 128;
         private const float JumpForce = 6.5f;
         private const string JumpButton = "Jump";
 
@@ -41,7 +40,6 @@ namespace Platformer2D_Task
 
         private bool Dead => _health.Value <= Health.MinValue;
 
-        // Start is called before the first frame update
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
@@ -136,15 +134,8 @@ namespace Platformer2D_Task
         private void OnCollisionExit2D(Collision2D collision)
         {
             _jumpEnable = false;
-
-            var colliders = new ContactPoint2D[CollidersToCheckNumber];
-            var number = _rigidbody.GetContacts(colliders);//Ётот подход не работает((
-            //ѕерса как будто бы подкидывает в воздух и он никаких коллайдеров не касаетс€.
-
-            if (number == 0)
-            {
-                State = PlayerState.Jump;
-            }
+            
+            State = PlayerState.Jump;
         }
 
         private bool CheckTheFloor(Collision2D collision)
