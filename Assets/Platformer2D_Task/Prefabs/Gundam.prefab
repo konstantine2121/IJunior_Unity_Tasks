@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8859032751523480251}
   - component: {fileID: 8859032751523480247}
   - component: {fileID: 8859032751523480244}
+  - component: {fileID: 1237636263139704}
   m_Layer: 0
   m_Name: Gundam
   m_TagString: Untagged
@@ -161,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wayPoints: []
   _moveSpeed: 2
+  _stayOnPointTime: 1
 --- !u!114 &8859032751523480244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,5 +173,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a12e441938b11e34aa82b19dd1779939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1237636263139704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8859032751523480243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d95023154cf6ec1429c704f4f557e8c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

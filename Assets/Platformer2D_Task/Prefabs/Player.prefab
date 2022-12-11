@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 657378915618475476}
   - component: {fileID: 657378915618475479}
   - component: {fileID: 657378915618475487}
+  - component: {fileID: 8430400651708470754}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -136,8 +137,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.22, y: 0.92}
-  m_EdgeRadius: 0.1
+  m_Size: {x: 0.3, y: 1}
+  m_EdgeRadius: 0.05
 --- !u!114 &657378915618475482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,7 +163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c7b4a7d206d94b42ae1f49fa3fe627f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxValue: 5
+  _maxValue: 10
+  _invulnerabilityTime: 2
 --- !u!114 &657378915618475476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,3 +210,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41dedbfa4e13f0041925555e539d29e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8430400651708470754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657378915618475439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd23119b86445a840b2dc8857f6d5b26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _affectedColor: {r: 0.35164282, g: 0.8679245, b: 0.31523672, a: 1}

@@ -9,9 +9,7 @@ namespace Platformer2D_Task
 
         private void Awake()
         {
-            _boxCollider = GetComponent<BoxCollider2D>();
-
-            _boxCollider.size = new Vector2(1000, 20);
+            _boxCollider = GetComponent<BoxCollider2D>();            
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
