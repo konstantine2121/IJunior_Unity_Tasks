@@ -1,4 +1,5 @@
-using System;
+//using System;
+using System.Linq;
 using UnityEngine;
 
 
@@ -7,9 +8,8 @@ namespace Platformer2D_Task
     [RequireComponent(typeof(BoxCollider2D))]
     public class DamageDealer : MonoBehaviour
     {
+        [SerializeField]private DamageTargetType [] _damageTakersWhiteList;
         [SerializeField][Range(0, 100)]private int _damageValue = 3;
-
-        private Type[] _damageTakers = { typeof(Player)};
 
         #region Collisions And Triggers Check
 
@@ -37,27 +37,24 @@ namespace Platformer2D_Task
 
         private void PerformDamageLogic(GameObject target)
         {
-            if (CheckDamageTaker(target, out Health health))
+            if (CheckDamageTaker(target, out IDamageTaker damageTaker))
             {
-                health.TakeDamage(_damageValue);
+                damageTaker.TakeDamage(_damageValue);
             }
         }
 
-        private bool CheckDamageTaker(GameObject gameObject, out Health health)
+        private bool CheckDamageTaker(GameObject gameObject, out IDamageTaker damageTaker)
         {
-            var hasHealth = gameObject.TryGetComponent<Health>(out health);
-            var isDamageTaker = false;
-
-            foreach (var type in _damageTakers)
+            var damageTargetType = gameObject.GetDamageTargetType();
+            var isDamageable = gameObject.TryGetComponent(out damageTaker) && 
+                (damageTargetType != DamageTargetType.None);
+            
+            if (isDamageable == false)
             {
-                if (gameObject.TryGetComponent(type, out Component component))
-                {
-                    isDamageTaker = true;
-                    break;
-                }
+                return false;
             }
 
-            return hasHealth && isDamageTaker;
+            return _damageTakersWhiteList.Contains(damageTargetType);
         }
     }
 }

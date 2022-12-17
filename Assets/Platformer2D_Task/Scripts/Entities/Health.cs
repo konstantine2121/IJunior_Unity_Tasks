@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Platformer2D_Task
 {
-    public class Health : MonoBehaviour
+    public class Health : MonoBehaviour, IDamageTaker
     {
         public  const int MinValue = 0;
 

@@ -160,7 +160,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48cc461e27644da44bac8e31a30ced4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPoints: []
+  _wayPoints:
+  - {fileID: 0}
+  - {fileID: 0}
   _moveSpeed: 2
   _stayOnPointTime: 1
 --- !u!114 &8859032751523480244
@@ -187,3 +189,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d95023154cf6ec1429c704f4f557e8c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damageTakersWhiteList: 00000000
+  _damageValue: 3

@@ -4,7 +4,7 @@ namespace Platformer2D_Task
 {
     [RequireComponent(typeof(Health))]
     [RequireComponent(typeof(SpriteRenderer))]
-    public class DamageAffector : MonoBehaviour
+    public class DamageColorAffector : MonoBehaviour
     {
         [SerializeField]private Color _affectedColor;
 

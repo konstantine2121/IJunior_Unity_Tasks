@@ -1574,13 +1574,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 657378915618475477, guid: 6c6ab54ad2d1bb0469044e2ebeb82762, type: 3}
-      propertyPath: _maxValue
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 657378915618475477, guid: 6c6ab54ad2d1bb0469044e2ebeb82762, type: 3}
-      propertyPath: _invulnerabilityTime
-      value: 1
+    - target: {fileID: 657378915618475439, guid: 6c6ab54ad2d1bb0469044e2ebeb82762, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 657378915618475486, guid: 6c6ab54ad2d1bb0469044e2ebeb82762, type: 3}
       propertyPath: m_RootOrder
@@ -1635,13 +1631,49 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1237636263139704, guid: 0d41751fc8fd8fa42b52933cfaf1256c, type: 3}
+      propertyPath: _damageLayers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1237636263139704, guid: 0d41751fc8fd8fa42b52933cfaf1256c, type: 3}
+      propertyPath: _damageTakers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1237636263139704, guid: 0d41751fc8fd8fa42b52933cfaf1256c, type: 3}
+      propertyPath: _damageLayers.useTriggers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1237636263139704, guid: 0d41751fc8fd8fa42b52933cfaf1256c, type: 3}
+      propertyPath: _damageLayers.useLayerMask
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1237636263139704, guid: 0d41751fc8fd8fa42b52933cfaf1256c, type: 3}
+      propertyPath: _damageTakers.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1237636263139704, guid: 0d41751fc8fd8fa42b52933cfaf1256c, type: 3}
+      propertyPath: _damageLayers.layerMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1237636263139704, guid: 0d41751fc8fd8fa42b52933cfaf1256c, type: 3}
+      propertyPath: _damageLayers.Array.data[0].m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1237636263139704, guid: 0d41751fc8fd8fa42b52933cfaf1256c, type: 3}
+      propertyPath: _damageLayers.Array.data[0].useTriggers
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1237636263139704, guid: 0d41751fc8fd8fa42b52933cfaf1256c, type: 3}
+      propertyPath: _damageLayers.Array.data[0].useLayerMask
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1237636263139704, guid: 0d41751fc8fd8fa42b52933cfaf1256c, type: 3}
+      propertyPath: _damageLayers.Array.data[0].layerMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8859032751523480243, guid: 0d41751fc8fd8fa42b52933cfaf1256c, type: 3}
       propertyPath: m_Name
       value: Gundam
-      objectReference: {fileID: 0}
-    - target: {fileID: 8859032751523480247, guid: 0d41751fc8fd8fa42b52933cfaf1256c, type: 3}
-      propertyPath: _wayPoints.Array.size
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8859032751523480247, guid: 0d41751fc8fd8fa42b52933cfaf1256c, type: 3}
       propertyPath: _wayPoints.Array.data[0]

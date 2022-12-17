@@ -163,8 +163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c7b4a7d206d94b42ae1f49fa3fe627f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxValue: 10
-  _invulnerabilityTime: 2
+  _maxValue: 7
+  _invulnerabilityTime: 1
 --- !u!114 &657378915618475476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,4 +222,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd23119b86445a840b2dc8857f6d5b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _affectedColor: {r: 0.35164282, g: 0.8679245, b: 0.31523672, a: 1}
+  _affectedColor: {r: 0.8666667, g: 0.31372547, b: 0.38371533, a: 1}
