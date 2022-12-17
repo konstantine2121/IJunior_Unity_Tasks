@@ -144,6 +144,7 @@ namespace Platformer2D_Task
             if (CheckTheFloor(collision))
             {
                 _jumpEnable = true;
+
                 if (State == PlayerStates.Jump)
                 {
                     State = PlayerStates.Idle;
