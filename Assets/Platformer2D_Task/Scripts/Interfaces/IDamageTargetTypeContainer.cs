@@ -2,7 +2,7 @@
 {
     public interface IDamageTargetTypeContainer
     {
-        DamageTargetType DamageTargetType { get; }
+        DamageTargetTypes DamageTargetType { get; }
     }
 
 }

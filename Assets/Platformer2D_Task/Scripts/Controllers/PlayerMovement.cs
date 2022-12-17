@@ -15,7 +15,7 @@ namespace Platformer2D_Task
         private const float JumpForce = 6.5f;
         private const string JumpButton = "Jump";
 
-        public event Action<PlayerState> StateChanged;
+        public event Action<PlayerStates> StateChanged;
 
         [SerializeField] private float _moveSpeed = 5;
         
@@ -23,12 +23,12 @@ namespace Platformer2D_Task
         private BoxCollider2D _boxCollider;
         private Health _health;
         private SpriteRenderer _renderer;
-        private PlayerState _state = PlayerState.Idle;
+        private PlayerStates _state = PlayerStates.Idle;
         
         private bool _jumpKeyPressed;
         private bool _jumpEnable;
 
-        public PlayerState State
+        public PlayerStates State
         {
             get => _state;
             private set 
@@ -48,7 +48,7 @@ namespace Platformer2D_Task
             _renderer = GetComponent<SpriteRenderer>();
 
             _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-            _health.MinValueReached += (health, value) => State = PlayerState.Dead;
+            _health.MinValueReached += (health, value) => State = PlayerStates.Dead;
         }
 
         private void Update()
@@ -89,11 +89,11 @@ namespace Platformer2D_Task
 
             SetRendererTurn(movement);
 
-            if (State != PlayerState.Jump)
+            if (State != PlayerStates.Jump)
             {
                 State = movement == Vector2.zero ? 
-                    PlayerState.Idle : 
-                    PlayerState.Run;                
+                    PlayerStates.Idle : 
+                    PlayerStates.Run;                
             }
         }
 
@@ -118,24 +118,37 @@ namespace Platformer2D_Task
 
                 _rigidbody.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
 
-                State = PlayerState.Jump;
+                State = PlayerStates.Jump;
             }
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (CheckTheFloor(collision))
-            {
-                _jumpEnable = true;
-                State = PlayerState.Idle;
-            }
+            TryEnableJump(collision);
         }
-        
+
+        private void OnCollisionStay2D(Collision2D collision)
+        {
+            TryEnableJump(collision);
+        }
+
         private void OnCollisionExit2D(Collision2D collision)
         {
             _jumpEnable = false;
             
-            State = PlayerState.Jump;
+            State = PlayerStates.Jump;
+        }
+
+        private void TryEnableJump(Collision2D collision)
+        {
+            if (CheckTheFloor(collision))
+            {
+                _jumpEnable = true;
+                if (State == PlayerStates.Jump)
+                {
+                    State = PlayerStates.Idle;
+                }
+            }
         }
 
         private bool CheckTheFloor(Collision2D collision)

@@ -8,7 +8,7 @@ namespace Platformer2D_Task
     [RequireComponent(typeof(BoxCollider2D))]
     public class DamageDealer : MonoBehaviour
     {
-        [SerializeField]private DamageTargetType [] _damageTakersWhiteList;
+        [SerializeField]private DamageTargetTypes [] _damageTakersWhiteList;
         [SerializeField][Range(0, 100)]private int _damageValue = 3;
 
         #region Collisions And Triggers Check
@@ -47,7 +47,7 @@ namespace Platformer2D_Task
         {
             var damageTargetType = gameObject.GetDamageTargetType();
             var isDamageable = gameObject.TryGetComponent(out damageTaker) && 
-                (damageTargetType != DamageTargetType.None);
+                (damageTargetType != DamageTargetTypes.None);
             
             if (isDamageable == false)
             {

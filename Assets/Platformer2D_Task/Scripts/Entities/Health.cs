@@ -19,6 +19,8 @@ namespace Platformer2D_Task
         private bool _invulnerability;
         private WaitForSeconds _invulnerabilityDelay;
 
+        public int MaxValue => _maxValue;
+
         public int Value
         {
             get 

@@ -1,6 +1,6 @@
 ﻿namespace Platformer2D_Task
 {
-    public enum GundamState
+    public enum GundamStates
     {
         Idle,
         Walk

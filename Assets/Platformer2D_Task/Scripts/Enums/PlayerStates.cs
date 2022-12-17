@@ -1,6 +1,6 @@
 ﻿namespace Platformer2D_Task
 {
-    public enum PlayerState
+    public enum PlayerStates
     {
         Idle,
         Run,

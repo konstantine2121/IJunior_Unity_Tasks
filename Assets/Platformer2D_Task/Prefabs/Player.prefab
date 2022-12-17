@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 657378915618475479}
   - component: {fileID: 657378915618475487}
   - component: {fileID: 8430400651708470754}
+  - component: {fileID: 2358172789229130508}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -223,3 +224,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _affectedColor: {r: 0.8666667, g: 0.31372547, b: 0.38371533, a: 1}
+--- !u!114 &2358172789229130508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657378915618475439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2981a99afea85804cbc4c6dbf324dc93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startAmountOfCoins: 0

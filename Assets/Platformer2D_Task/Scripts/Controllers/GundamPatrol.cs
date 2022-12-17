@@ -9,7 +9,7 @@ namespace Platformer2D_Task
     [RequireComponent(typeof(SpriteRenderer))]
     public class GundamPatrol : MonoBehaviour
     {   
-        public event Action<GundamState> StateChanged;
+        public event Action<GundamStates> StateChanged;
 
         [SerializeField] private Transform [] _wayPoints;
         [SerializeField] private float _moveSpeed = 5;
@@ -21,9 +21,9 @@ namespace Platformer2D_Task
         private bool _stayOnPoint = false;
         private WaitForSeconds _stayOnPointDelay;
         private int _wayPoinIndex = 0;
-        private GundamState _state = GundamState.Idle;
+        private GundamStates _state = GundamStates.Idle;
         
-        public GundamState State
+        public GundamStates State
         {
             get => _state;
             private set 
@@ -59,7 +59,7 @@ namespace Platformer2D_Task
             var targetPoint = _wayPoints[_wayPoinIndex];
             transform.position = Vector2.MoveTowards(transform.position, targetPoint.position, _moveSpeed*Time.fixedDeltaTime);
             var delta = transform.position - previousPosition;
-            State = delta.x != 0 ? GundamState.Walk : GundamState.Idle;
+            State = delta.x != 0 ? GundamStates.Walk : GundamStates.Idle;
             SetRendererTurn(delta);
 
             if (transform.position == targetPoint.position)
@@ -94,7 +94,7 @@ namespace Platformer2D_Task
         private void BeginStayMode()
         {
             _stayOnPoint = true;
-            State = GundamState.Idle;
+            State = GundamStates.Idle;
             StartCoroutine(EndStayMode());
         }
 

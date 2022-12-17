@@ -14,14 +14,21 @@ namespace Platformer2D_Task
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.TryGetComponent<Health>(out Health health))
+            var collisionObject = collision.gameObject;
+
+            if (collisionObject.TryGetComponent<IDamageTaker>(out IDamageTaker damageTaker))
             {
-                health.Kill();
+                damageTaker.Kill();
             }
 
-            if (collision.gameObject.TryGetComponent<Rigidbody2D>(out Rigidbody2D rigidbody))
+            if (collisionObject.TryGetComponent<Rigidbody2D>(out Rigidbody2D rigidbody))
             {
                 rigidbody.simulated = false;
+            }
+
+            if (collisionObject.TryGetComponent<ICollectable>(out ICollectable collectable))
+            {
+                Destroy(collisionObject);
             }
         }
     }

@@ -34,20 +34,20 @@ namespace Platformer2D_Task
             _movement.StateChanged += StateChanged;
         }
 
-        private void StateChanged(PlayerState state)
+        private void StateChanged(PlayerStates state)
         {  
             switch (state)
             {
-                case PlayerState.Idle:
+                case PlayerStates.Idle:
                     SetIdleState();
                     break;
-                case PlayerState.Run:
+                case PlayerStates.Run:
                     SetRunState();
                     break;
-                case PlayerState.Jump:
+                case PlayerStates.Jump:
                     SetJumpState();
                     break;
-                case PlayerState.Dead:
+                case PlayerStates.Dead:
                     SetDeadState();
                     break;
             };

@@ -26,14 +26,14 @@ namespace Platformer2D_Task
             _patrol.StateChanged += StateChanged;
         }
 
-        private void StateChanged(GundamState state)
+        private void StateChanged(GundamStates state)
         {  
             switch (state)
             {
-                case GundamState.Idle:
+                case GundamStates.Idle:
                     SetIdleState();
                     break;
-                case GundamState.Walk:
+                case GundamStates.Walk:
                     SetWalkState();
                     break;                
             };
