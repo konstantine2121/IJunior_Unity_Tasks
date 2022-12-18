@@ -6,7 +6,7 @@ namespace Platformer2D_Task
 {
     public class BoxSpawner : MonoBehaviour
     {
-        private const float Interval = 5;
+        private const float Interval = 4;
 
         [SerializeField] private Box _box;
 

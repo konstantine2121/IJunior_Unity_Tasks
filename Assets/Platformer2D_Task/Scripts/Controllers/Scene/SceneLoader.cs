@@ -51,7 +51,15 @@ namespace Platformer2D_Task
 
         private void UnbindUI()
         {
+            if (_player == null)
+            {
+                return;
+            }
 
+            var health = _player.GetComponent<Health>();
+            var collector = _player.GetComponent<BoxCollector>();
+
+            
         }
 
         private void SpawnEntities()
@@ -69,7 +77,7 @@ namespace Platformer2D_Task
         }
 
         private void RemoveEntitiesOfType<T>() where T : MonoBehaviour
-        {   
+        {
             var objects = FindObjectsOfType(typeof(T)) as MonoBehaviour[];
 
             if (objects == null)

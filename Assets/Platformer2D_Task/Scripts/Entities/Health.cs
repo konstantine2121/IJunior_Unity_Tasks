@@ -6,14 +6,14 @@ namespace Platformer2D_Task
 {
     public class Health : MonoBehaviour, IDamageTaker
     {
-        public  const int MinValue = 0;
+        public const int MinValue = 0;
 
         public event Action<Health, int> ValueChanged;
         public event Action<Health, int> MinValueReached;
         public event Action<Health, bool> InvulnerabilityChanged;
 
-        [SerializeField][Range(1, 10)] int _maxValue;
-        [SerializeField][Range(1, 5)] float _invulnerabilityTime = 3;
+        [SerializeField] [Range(1, 10)] int _maxValue;
+        [SerializeField] [Range(1, 5)] float _invulnerabilityTime = 3;
 
         private int _value;
         private bool _invulnerability;
@@ -23,12 +23,12 @@ namespace Platformer2D_Task
 
         public int Value
         {
-            get 
-            { 
-                return _value; 
+            get
+            {
+                return _value;
             }
             private set
-            {                
+            {
                 var valueChanged = _value != value;
                 _value = value;
 
@@ -50,7 +50,8 @@ namespace Platformer2D_Task
             }
         }
 
-        public bool Invulnerability { 
+        public bool Invulnerability
+        {
             get
             {
                 return _invulnerability;
@@ -97,5 +98,5 @@ namespace Platformer2D_Task
             yield return _invulnerabilityDelay;
             Invulnerability = false;
         }
-    }
+    }    
 }
