@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4313279442192898841}
   - component: {fileID: 4313279442192898842}
   - component: {fileID: 4313279442192898843}
-  - component: {fileID: 4313279442192898844}
+  - component: {fileID: -3977453704814399298}
   m_Layer: 0
   m_Name: GearBox
   m_TagString: Untagged
@@ -134,7 +134,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4313279442192898844
+--- !u!114 &-3977453704814399298
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

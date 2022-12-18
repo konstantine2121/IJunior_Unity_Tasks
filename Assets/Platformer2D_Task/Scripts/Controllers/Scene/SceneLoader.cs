@@ -68,9 +68,9 @@ namespace Platformer2D_Task
             RemoveEntitiesOfType<Box>();
         }
 
-        private void RemoveEntitiesOfType<T>() where T : class
+        private void RemoveEntitiesOfType<T>() where T : MonoBehaviour
         {   
-            var objects = Resources.FindObjectsOfTypeAll(typeof(T));
+            var objects = FindObjectsOfType(typeof(T)) as MonoBehaviour[];
 
             if (objects == null)
             {
@@ -78,8 +78,8 @@ namespace Platformer2D_Task
             }
 
             foreach(var obj in objects)
-            {
-                DestroyImmediate(obj, true);
+            {   
+                Destroy(obj.gameObject);
             }
         }
 
