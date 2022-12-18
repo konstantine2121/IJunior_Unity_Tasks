@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Platformer2D_Task
@@ -11,27 +13,33 @@ namespace Platformer2D_Task
     {   
         public event Action<GundamStates> StateChanged;
 
-        [SerializeField] private Transform [] _wayPoints;
+        [SerializeField] private Vector3[] _wayPoints;
         [SerializeField] private float _moveSpeed = 5;
         [SerializeField] private float _stayOnPointTime = 1;
-        
-        private BoxCollider2D _boxCollider;        
+
+        private BoxCollider2D _boxCollider;
         private SpriteRenderer _renderer;
 
         private bool _stayOnPoint = false;
         private WaitForSeconds _stayOnPointDelay;
         private int _wayPoinIndex = 0;
         private GundamStates _state = GundamStates.Idle;
-        
+
         public GundamStates State
         {
             get => _state;
-            private set 
+            private set
             {
                 _state = value;
                 StateChanged?.Invoke(_state);
             }
         }
+
+        public void SetNewWayPoints(IEnumerable<Vector3> points)
+        {
+            _wayPoints = points.ToArray();
+        }
+
 
         private void Awake()
         {
@@ -50,19 +58,19 @@ namespace Platformer2D_Task
 
         private void PerformPatrolLogic()
         {
-            if ( _wayPoints.Length == 0 || _stayOnPoint)
+            if (_wayPoints.Length == 0 || _stayOnPoint)
             {
                 return;
             }
 
             var previousPosition = transform.position;
             var targetPoint = _wayPoints[_wayPoinIndex];
-            transform.position = Vector2.MoveTowards(transform.position, targetPoint.position, _moveSpeed*Time.fixedDeltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, targetPoint, _moveSpeed * Time.fixedDeltaTime);
             var delta = transform.position - previousPosition;
             State = delta.x != 0 ? GundamStates.Walk : GundamStates.Idle;
             SetRendererTurn(delta);
 
-            if (transform.position == targetPoint.position)
+            if (transform.position == targetPoint)
             {
                 IncrementWayPointIndex();
                 BeginStayMode();
