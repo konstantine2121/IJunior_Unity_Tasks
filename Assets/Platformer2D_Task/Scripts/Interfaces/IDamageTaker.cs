@@ -3,7 +3,7 @@ namespace Platformer2D_Task
 
     public interface IDamageTaker
     {
-        void TakeDamage(int damage);
+        void TakeDamage(float damage);
 
         void Kill();
     }

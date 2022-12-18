@@ -1,9 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <Style src="project://database/Assets/Platformer2D_Task/UI/platformer_2D.uss?fileID=7433441132597879392&amp;guid=f6f9c51ad546b0745b3761400b9c7756&amp;type=3#platformer_2D" />
-    <ui:VisualElement name="HorisontalBar" style="height: 43px;" />
-    <ui:GroupBox>
-        <ui:VisualElement />
-        <ui:VisualElement />
-    </ui:GroupBox>
-    <ui:Button text="My Button" display-tooltip-when-elided="true" />
-</ui:UXML>

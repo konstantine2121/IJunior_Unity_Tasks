@@ -12,6 +12,8 @@ namespace Platformer2D_Task
         [SerializeField] private Vector3 _gundamSpawnPosition;
         private Player _player;
 
+        private Transform _ui;
+        private PlayerHPBar _playerHP;
 
         private EntitiesFactory _entytiesFactory;
 
@@ -32,7 +34,9 @@ namespace Platformer2D_Task
 
         private void CreateUI()
         {
+            _ui = _entytiesFactory.CreateGUI();
 
+            _playerHP = _ui?.GetComponentsInChildren<PlayerHPBar>().FirstOrDefault();
         }
 
         private void BindUI()
@@ -45,7 +49,7 @@ namespace Platformer2D_Task
             var health = _player.GetComponent<Health>();
             var collector = _player.GetComponent<BoxCollector>();
 
-            //hp
+            _playerHP.RegisterHealth(health);
 
         }
 
@@ -56,7 +60,9 @@ namespace Platformer2D_Task
                 return;
             }
 
-            var health = _player.GetComponent<Health>();
+            _playerHP?.UnregisterHealth();
+
+            
             var collector = _player.GetComponent<BoxCollector>();
 
             
@@ -64,9 +70,9 @@ namespace Platformer2D_Task
 
         private void SpawnEntities()
         {
-            _player = _entytiesFactory.SpawnPlayer(_playerSpawnPosition);
+            _player = _entytiesFactory.CreatePlayer(_playerSpawnPosition);
 
-            _entytiesFactory.SpawnGundam(_gundamSpawnPosition, GetGundamPatrolPoints());
+            _entytiesFactory.CreateGundam(_gundamSpawnPosition, GetGundamPatrolPoints());
         }
 
         private void RemoveEntities()

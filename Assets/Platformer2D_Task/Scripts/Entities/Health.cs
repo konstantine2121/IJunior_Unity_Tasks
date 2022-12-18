@@ -6,22 +6,22 @@ namespace Platformer2D_Task
 {
     public class Health : MonoBehaviour, IDamageTaker
     {
-        public const int MinValue = 0;
+        public const float MinValue = 0;
 
-        public event Action<Health, int> ValueChanged;
-        public event Action<Health, int> MinValueReached;
+        public event Action<Health, float> ValueChanged;
+        public event Action<Health, float> MinValueReached;
         public event Action<Health, bool> InvulnerabilityChanged;
 
-        [SerializeField] [Range(1, 10)] int _maxValue;
+        [SerializeField] [Range(1, 10)] float _maxValue;
         [SerializeField] [Range(1, 5)] float _invulnerabilityTime = 3;
 
-        private int _value;
+        private float _value;
         private bool _invulnerability;
         private WaitForSeconds _invulnerabilityDelay;
 
-        public int MaxValue => _maxValue;
+        public float MaxValue => _maxValue;
 
-        public int Value
+        public float Value
         {
             get
             {
@@ -74,11 +74,11 @@ namespace Platformer2D_Task
             Value = _maxValue;
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(float damage)
         {
             if (Invulnerability == false)
             {
-                Value = (int)Mathf.MoveTowards(Value, MinValue, Mathf.Abs(damage));
+                Value = (float)Mathf.MoveTowards(Value, MinValue, Mathf.Abs(damage));
             }
         }
 

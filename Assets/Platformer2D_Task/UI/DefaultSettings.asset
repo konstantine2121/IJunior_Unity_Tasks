@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 19101, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: PlayerInfoBarSettings
+  m_Name: DefaultSettings
   m_EditorClassIdentifier: 
   themeUss: {fileID: -4733365628477956816, guid: 08e01b87f232f174faf5664649059b5a, type: 3}
   m_TargetTexture: {fileID: 0}

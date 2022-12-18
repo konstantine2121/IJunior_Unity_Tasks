@@ -7,14 +7,17 @@ namespace Platformer2D_Task
     {
         [SerializeField] private Player _playerPrefab;
         [SerializeField] private Gundam _gundamPrefab;
+        [SerializeField] private Transform _guiPrefab;
 
-        private bool CanSpawnPlayer => _playerPrefab != null;
+        private bool CanCreatePlayer => _playerPrefab != null;
 
-        private bool CanSpawnGundam => _gundamPrefab != null;
+        private bool CanCreateGundam => _gundamPrefab != null;
 
-        public Player SpawnPlayer(Vector3 position)
+        private bool CanCreateGUI => _guiPrefab != null;
+
+        public Player CreatePlayer(Vector3 position)
         {
-            if (CanSpawnPlayer)
+            if (CanCreatePlayer)
             {
                 return Instantiate(_playerPrefab, position, Quaternion.identity);
             }
@@ -22,9 +25,9 @@ namespace Platformer2D_Task
             return null;
         }
 
-        public Gundam SpawnGundam(Vector3 position, IEnumerable <Vector3> waypoints)
+        public Gundam CreateGundam(Vector3 position, IEnumerable <Vector3> waypoints)
         {
-            if (CanSpawnGundam == false)
+            if (CanCreateGundam == false)
             {
                 return null;                
             }
@@ -38,6 +41,16 @@ namespace Platformer2D_Task
             }
 
             return gundam;
+        }
+
+        public Transform CreateGUI()
+        {
+            if (CanCreateGUI)
+            {
+                return Instantiate(_guiPrefab, Vector3.zero, Quaternion.identity);
+            }
+
+            return null;
         }
     }
 }
