@@ -40,7 +40,6 @@ namespace Platformer2D_Task
             _wayPoints = points.ToArray();
         }
 
-
         private void Awake()
         {
             _stayOnPointDelay = new WaitForSeconds(_stayOnPointTime);

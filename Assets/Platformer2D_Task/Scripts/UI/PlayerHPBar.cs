@@ -11,16 +11,6 @@ namespace Platformer2D_Task
         private UIDocument _ui;
         private VisualElement _healthBar;
 
-        public bool HealthEnabled => _health != null;
-
-        public bool HealthBarEnabled => _healthBar != null;
-
-        private void Awake()
-        {
-            _ui = GetComponent<UIDocument>();            
-            _healthBar = _ui.rootVisualElement.Q<VisualElement>("health-bar");
-        }
-
         public void RegisterHealth(Health health)
         {
             UnregisterHealth();
@@ -42,6 +32,12 @@ namespace Platformer2D_Task
             }
 
             _health = null;
+        }
+
+        private void Awake()
+        {
+            _ui = GetComponent<UIDocument>();
+            _healthBar = _ui.rootVisualElement.Q<VisualElement>("health-bar");
         }
 
         private void UpdateHP(Health health, float value)

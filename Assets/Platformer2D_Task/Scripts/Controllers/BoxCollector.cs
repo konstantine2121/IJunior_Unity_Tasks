@@ -12,13 +12,15 @@ namespace Platformer2D_Task
 
         private readonly Wallet _wallet = new Wallet();
 
-        public Action<int> NumberOfCoinsChanged => _wallet.NumberOfCoinsChanged;
+        public Action<int> NumberOfCoinsChanged;
+            
 
-        public int Coins => _wallet.NumberOfCoins;
+        public int GearBoxes => _wallet.NumberOfCoins;
 
         void Awake()
         {
             _wallet.Initialize(_startAmountOfCoins);
+            _wallet.NumberOfCoinsChanged += (boxes) => NumberOfCoinsChanged?.Invoke(boxes);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)

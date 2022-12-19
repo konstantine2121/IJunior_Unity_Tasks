@@ -14,6 +14,7 @@ namespace Platformer2D_Task
         private Player _player;
         private Transform _ui;
         private PlayerHPBar _playerHP;
+        private ScoreBar _score;
         private EntitiesFactory _entytiesFactory;
 
         public void Restart()
@@ -36,6 +37,7 @@ namespace Platformer2D_Task
             _ui = _entytiesFactory.CreateGUI();
 
             _playerHP = _ui?.GetComponentsInChildren<PlayerHPBar>().FirstOrDefault();
+            _score = _ui?.GetComponentsInChildren<ScoreBar>().FirstOrDefault();
         }
 
         private void BindUI()
@@ -45,9 +47,8 @@ namespace Platformer2D_Task
                 return;
             }
 
-            _playerHP.RegisterHealth(_player.Health);
-
-            var collector = _player.BoxCollector;
+            _playerHP?.RegisterHealth(_player.Health);
+            _score?.RegisterCollector(_player.BoxCollector);
         }
 
         private void UnbindUI()
@@ -58,8 +59,7 @@ namespace Platformer2D_Task
             }
 
             _playerHP?.UnregisterHealth();
-            
-            var collector = _player.BoxCollector;
+            _score?.UnregisterCollector();
         }
 
         private void SpawnEntities()

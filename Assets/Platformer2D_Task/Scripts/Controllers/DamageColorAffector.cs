@@ -18,8 +18,17 @@ namespace Platformer2D_Task
             _health = GetComponent<Health>();
             _renderer = GetComponent<SpriteRenderer>();
 
-            _health.InvulnerabilityChanged += InvulnerabilityChanged;
             _defaultColor = _renderer.color;
+        }
+
+        private void OnEnable()
+        {
+            _health.InvulnerabilityChanged += InvulnerabilityChanged;
+        }
+
+        private void OnDisable()
+        {
+            _health.InvulnerabilityChanged -= InvulnerabilityChanged;
         }
 
         private void InvulnerabilityChanged(Health health, bool invulnerability)

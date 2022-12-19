@@ -21,8 +21,7 @@ namespace Platformer2D_Task
         private void Awake()
         {
             _patrol = GetComponent<GundamPatrol>();
-            _animator = GetComponent<Animator>();         
-
+            _animator = GetComponent<Animator>();
         }
 
         private void OnEnable()

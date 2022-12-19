@@ -29,9 +29,17 @@ namespace Platformer2D_Task
         private void Awake()
         {
             _movement = GetComponent<PlayerMovement>();
-            _animator = GetComponent<Animator>();         
+            _animator = GetComponent<Animator>();
+        }
 
+        private void OnEnable()
+        {
             _movement.StateChanged += StateChanged;
+        }
+
+        private void OnDisable()
+        {
+            _movement.StateChanged -= StateChanged;
         }
 
         private void StateChanged(PlayerStates state)
