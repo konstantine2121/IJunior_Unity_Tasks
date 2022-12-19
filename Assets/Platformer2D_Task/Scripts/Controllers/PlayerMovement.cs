@@ -47,8 +47,22 @@ namespace Platformer2D_Task
             _boxCollider = GetComponent<BoxCollider2D>();
             _renderer = GetComponent<SpriteRenderer>();
 
-            _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-            _health.MinValueReached += (health, value) => State = PlayerStates.Dead;
+            _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;            
+        }
+
+        private void OnEnable()
+        {
+            _health.MinValueReached += SetDeadState;
+        }
+
+        private void OnDisable()
+        {
+            _health.MinValueReached -= SetDeadState;
+        }
+
+        private void SetDeadState(Health health, float value)
+        {
+            State = PlayerStates.Dead;
         }
 
         private void Update()

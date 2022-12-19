@@ -23,7 +23,16 @@ namespace Platformer2D_Task
             _patrol = GetComponent<GundamPatrol>();
             _animator = GetComponent<Animator>();         
 
-            _patrol.StateChanged += StateChanged;
+        }
+
+        private void OnEnable()
+        {
+            _patrol.StateChanged += StateChanged;            
+        }
+
+        private void OnDisable()
+        {
+            _patrol.StateChanged -= StateChanged;            
         }
 
         private void StateChanged(GundamStates state)

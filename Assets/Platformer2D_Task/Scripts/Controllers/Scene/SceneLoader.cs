@@ -10,11 +10,10 @@ namespace Platformer2D_Task
         [SerializeField] private Transform _patrolWaypointsContainer;
         [SerializeField] private Vector3 _playerSpawnPosition;
         [SerializeField] private Vector3 _gundamSpawnPosition;
-        private Player _player;
 
+        private Player _player;
         private Transform _ui;
         private PlayerHPBar _playerHP;
-
         private EntitiesFactory _entytiesFactory;
 
         public void Restart()
@@ -46,11 +45,9 @@ namespace Platformer2D_Task
                 return;
             }
 
-            var health = _player.GetComponent<Health>();
-            var collector = _player.GetComponent<BoxCollector>();
+            _playerHP.RegisterHealth(_player.Health);
 
-            _playerHP.RegisterHealth(health);
-
+            var collector = _player.BoxCollector;
         }
 
         private void UnbindUI()
@@ -61,11 +58,8 @@ namespace Platformer2D_Task
             }
 
             _playerHP?.UnregisterHealth();
-
             
-            var collector = _player.GetComponent<BoxCollector>();
-
-            
+            var collector = _player.BoxCollector;
         }
 
         private void SpawnEntities()
