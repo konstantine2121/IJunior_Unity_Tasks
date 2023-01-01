@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
+using System;
 using System.IO;
 using UnityEditor;
 
@@ -15,6 +15,8 @@ namespace Platformer2D_Task
         private Player _playerPrefab;
         private Gundam _gundamPrefab;
         private GUI _guiPrefab;
+
+        private Player _player;
 
         private bool CanCreatePlayer => _playerPrefab != null;
 
@@ -31,7 +33,8 @@ namespace Platformer2D_Task
         {
             if (CanCreatePlayer)
             {
-                return Instantiate(_playerPrefab, position, Quaternion.identity);
+                _player = Instantiate(_playerPrefab, position, Quaternion.identity);
+                return _player;
             }
 
             return null;
@@ -59,7 +62,17 @@ namespace Platformer2D_Task
         {
             if (CanCreateGUI)
             {
-                return Instantiate(_guiPrefab, Vector3.zero, Quaternion.identity);
+                if (_player == null)
+                {
+                    throw new InvalidOperationException("Сущность player должна быть создана до создания интерфейсов.");
+                }
+
+                var gui = Instantiate(_guiPrefab, Vector3.zero, Quaternion.identity);
+
+                gui.PlayerHPBar.RegisterHealth(_player.Health);
+                gui.ScoreBar.RegisterCollector(_player.BoxCollector);
+
+                return gui;
             }
 
             return null;

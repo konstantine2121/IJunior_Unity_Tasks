@@ -34,14 +34,22 @@ namespace Platformer2D_Task
             {
                 _collector.NumberOfCoinsChanged -= UpdateScore;
             }
-
-            _collector = null;
         }
 
         private void Awake()
         {
             _ui = GetComponent<UIDocument>();
             _scoreLabel = _ui.rootVisualElement.Q<Label>("score-label");
+        }
+
+        private void OnEnable()
+        {
+            RegisterCollector(_collector);
+        }
+
+        private void OnDisable()
+        {
+            UnregisterCollector();
         }
 
         private void UpdateScore(int value)

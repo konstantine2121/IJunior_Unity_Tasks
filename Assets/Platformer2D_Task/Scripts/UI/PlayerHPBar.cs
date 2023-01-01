@@ -30,14 +30,22 @@ namespace Platformer2D_Task
             {
                 _health.ValueChanged -= UpdateHP;
             }
-
-            _health = null;
         }
 
         private void Awake()
         {
             _ui = GetComponent<UIDocument>();
             _healthBar = _ui.rootVisualElement.Q<VisualElement>("health-bar");
+        }
+
+        private void OnEnable()
+        {
+            RegisterHealth(_health);
+        }
+
+        private void OnDisable()
+        {
+            UnregisterHealth();
         }
 
         private void UpdateHP(Health health, float value)

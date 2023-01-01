@@ -11,61 +11,29 @@ namespace Platformer2D_Task
         [SerializeField] private Vector3 _playerSpawnPosition;
         [SerializeField] private Vector3 _gundamSpawnPosition;
 
-        private Player _player;
-        private GUI _ui;
-        private PlayerHPBar _playerHP;
-        private ScoreBar _score;
         private EntitiesFactory _entytiesFactory;
 
         public void Restart()
         {
-            UnbindUI();
             RemoveEntities();
             SpawnEntities();
-            BindUI();
+            CreateUI();
         }
 
         private void Start()
         {
             _entytiesFactory = GetComponent<EntitiesFactory>();
-            CreateUI();
             Restart();            
         }
 
         private void CreateUI()
         {
-            _ui = _entytiesFactory.CreateGUI();
-
-            _playerHP = _ui?.GetComponentsInChildren<PlayerHPBar>().FirstOrDefault();
-            _score = _ui?.GetComponentsInChildren<ScoreBar>().FirstOrDefault();
-        }
-
-        private void BindUI()
-        {
-            if (_player == null)
-            {
-                return;
-            }
-
-            _playerHP?.RegisterHealth(_player.Health);
-            _score?.RegisterCollector(_player.BoxCollector);
-        }
-
-        private void UnbindUI()
-        {
-            if (_player == null)
-            {
-                return;
-            }
-
-            _playerHP?.UnregisterHealth();
-            _score?.UnregisterCollector();
+            _entytiesFactory.CreateGUI();
         }
 
         private void SpawnEntities()
         {
-            _player = _entytiesFactory.CreatePlayer(_playerSpawnPosition);
-
+            _entytiesFactory.CreatePlayer(_playerSpawnPosition);
             _entytiesFactory.CreateGundam(_gundamSpawnPosition, GetGundamPatrolPoints());
         }
 
@@ -74,6 +42,7 @@ namespace Platformer2D_Task
             RemoveEntitiesOfType<Player>();
             RemoveEntitiesOfType<Gundam>();
             RemoveEntitiesOfType<Box>();
+            RemoveEntitiesOfType<GUI>();
         }
 
         private void RemoveEntitiesOfType<T>() where T : MonoBehaviour
