@@ -12,7 +12,7 @@ namespace Platformer2D_Task
         [SerializeField] private Vector3 _gundamSpawnPosition;
 
         private Player _player;
-        private Transform _ui;
+        private GUI _ui;
         private PlayerHPBar _playerHP;
         private ScoreBar _score;
         private EntitiesFactory _entytiesFactory;
@@ -25,7 +25,7 @@ namespace Platformer2D_Task
             BindUI();
         }
 
-        private void Awake()
+        private void Start()
         {
             _entytiesFactory = GetComponent<EntitiesFactory>();
             CreateUI();

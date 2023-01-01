@@ -1,19 +1,31 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System.IO;
+using UnityEditor;
 
 namespace Platformer2D_Task
 {
     public class EntitiesFactory : MonoBehaviour
     {
-        [SerializeField] private Player _playerPrefab;
-        [SerializeField] private Gundam _gundamPrefab;
-        [SerializeField] private Transform _guiPrefab;
+        private const string PlayerPrefab = "Player.prefab";
+        private const string GundamPrefab = "Gundam.prefab";
+        private const string GuiPrefab = "GUI.prefab";
+
+        private Player _playerPrefab;
+        private Gundam _gundamPrefab;
+        private GUI _guiPrefab;
 
         private bool CanCreatePlayer => _playerPrefab != null;
 
         private bool CanCreateGundam => _gundamPrefab != null;
 
         private bool CanCreateGUI => _guiPrefab != null;
+        
+        private void Awake()
+        {
+            GetLinks();
+        }
 
         public Player CreatePlayer(Vector3 position)
         {
@@ -43,7 +55,7 @@ namespace Platformer2D_Task
             return gundam;
         }
 
-        public Transform CreateGUI()
+        public GUI CreateGUI()
         {
             if (CanCreateGUI)
             {
@@ -51,6 +63,13 @@ namespace Platformer2D_Task
             }
 
             return null;
+        }
+
+        private void GetLinks()
+        {
+            _playerPrefab = AssetDatabase.LoadAssetAtPath<Player>(Path.Combine(ResourcesPaths.PrefabsDirPath, PlayerPrefab));
+            _gundamPrefab = AssetDatabase.LoadAssetAtPath<Gundam>(Path.Combine(ResourcesPaths.PrefabsDirPath, GundamPrefab));
+            _guiPrefab = AssetDatabase.LoadAssetAtPath<GUI>(Path.Combine(ResourcesPaths.PrefabsDirPath, GuiPrefab));
         }
     }
 }
