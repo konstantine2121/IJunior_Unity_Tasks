@@ -69,7 +69,7 @@ namespace Platformer2D_Task
 
                 var gui = Instantiate(_guiPrefab, Vector3.zero, Quaternion.identity);
 
-                gui.PlayerHPBar.RegisterHealth(_player.Health);
+                gui.PlayerHpBar.RegisterHealth(_player.Health);
                 gui.ScoreBar.RegisterCollector(_player.BoxCollector);
 
                 return gui;

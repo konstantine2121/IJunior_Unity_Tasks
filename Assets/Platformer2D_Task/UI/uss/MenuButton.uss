@@ -1,0 +1,55 @@
+.menu-button {
+    justify-content: flex-start;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    max-height: 40px;
+    min-height: 35px;
+    border-bottom-width: 4px;
+    border-bottom-color: rgb(89, 161, 148);
+    border-left-color: rgb(89, 161, 148);
+    border-right-color: rgb(89, 161, 148);
+    border-top-color: rgb(89, 161, 148);
+    -unity-text-outline-color: rgb(84, 125, 195);
+    color: rgb(241, 156, 126);
+    background-color: rgb(104, 154, 116);
+    border-left-width: 4px;
+    border-right-width: 4px;
+    border-top-width: 4px;
+    scale: 1 1;
+    transition-property: all ignored;
+    transition-duration: 0s 0s;
+    transition-timing-function: ease ease;
+    transition-delay: 0s 0s;
+    font-size: 26px;
+    -unity-font-style: bold;
+}
+
+.menu-button:hover
+{
+    background-color: rgba(124, 192, 141, 255);
+    border-left-color: rgba(161, 133, 89, 255);
+    border-right-color: rgba(161, 133, 89, 255);
+    border-top-color: rgba(161, 133, 89, 255);
+    border-bottom-color: rgba(161, 133, 89, 255);
+    color: rgba(236, 241, 126, 255);
+}
+
+.menu-button:active
+{
+    background-color: rgba(189, 122, 141, 255);
+    border-left-color: rgba(161, 193, 156, 255);
+    border-right-color: rgba(161, 193, 156, 255);
+    border-top-color: rgba(161, 193, 156, 255);
+    border-bottom-color: rgba(161, 193, 156, 255);
+    color: rgba(50, 50, 50, 255);
+}

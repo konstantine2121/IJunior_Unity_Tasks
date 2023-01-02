@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Platformer2D_Task
+namespace Platformer2D_Task.UI
 {
     [RequireComponent(typeof(UIDocument))]
-    public class PlayerHPBar : MonoBehaviour
+    public class PlayerHpBar : MonoBehaviour, IPlayerHpBar
     {
         [SerializeField] private Health _health;
 

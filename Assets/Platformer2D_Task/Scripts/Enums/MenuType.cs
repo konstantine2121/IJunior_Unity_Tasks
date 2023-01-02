@@ -3,8 +3,11 @@
     public enum MenuType
     {
         Unknown = -1,
-        Main,
+        MainMenu,
         Pause,
-        GameOver
+        GameOver,
+        Game,
+        ExitConfirm,
+        About
     }
 }

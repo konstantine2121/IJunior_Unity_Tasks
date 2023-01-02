@@ -1,3 +1,4 @@
+using Platformer2D_Task.UI;
 using UnityEngine;
 
 namespace Platformer2D_Task
@@ -5,12 +6,12 @@ namespace Platformer2D_Task
 
     public class GUI : MonoBehaviour
     {
-        [SerializeField] private PlayerHPBar _playerHPBar;
+        [SerializeField] private PlayerHpBar _playerHpBar;
 
         [SerializeField] private ScoreBar _scoreBar;
 
-        public PlayerHPBar PlayerHPBar => _playerHPBar;
+        public IPlayerHpBar PlayerHpBar => _playerHpBar;
 
-        public ScoreBar ScoreBar => _scoreBar;
+        public IScoreBar ScoreBar => _scoreBar;
     }
 }

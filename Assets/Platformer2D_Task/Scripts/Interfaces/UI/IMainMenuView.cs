@@ -1,11 +1,11 @@
-﻿namespace Platformer2D_Task
+﻿namespace Platformer2D_Task.UI
 {
-    interface IMainMenuView : ICommonMenuView
+    public interface IMainMenuView : IBaseMenuView
     {
-        /*
-1)играть
-2)об авторах
-3)выход
-         */
+        MenuButton Play { get; }
+        
+        MenuButton About { get; }
+                
+        MenuButton Exit { get; }
     }
 }

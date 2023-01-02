@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Platformer2D_Task
+namespace Platformer2D_Task.UI
 {
     [RequireComponent(typeof(UIDocument))]
-    public class ScoreBar : MonoBehaviour
+    public class ScoreBar : MonoBehaviour, IScoreBar
     {
         [SerializeField] private BoxCollector _collector;
 

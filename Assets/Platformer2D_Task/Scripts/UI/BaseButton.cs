@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace Platformer2D_Task
+namespace Platformer2D_Task.UI
 {
     public abstract class BaseButton
     {
         public Action<BaseButton> Clicked;
         
-        string Text { get; set; }
+        public abstract string Text { get; set; }
     }
 }
