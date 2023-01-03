@@ -1,9 +1,11 @@
-﻿namespace Platformer2D_Task.UI
+﻿using UnityEngine.UIElements;
+
+namespace Platformer2D_Task.UI
 {
     public interface IPauseMenuView : IBaseMenuView
     {
-        MenuButton Resume { get; }
+        Button Resume { get; }
 
-        MenuButton MainMenu { get; }
+        Button MainMenu { get; }
     }
 }

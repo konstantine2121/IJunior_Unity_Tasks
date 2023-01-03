@@ -5,36 +5,34 @@ using UnityEngine;
 namespace Platformer2D_Task
 {
     [RequireComponent(typeof(EntitiesFactory))]
-    public class SceneLoader : MonoBehaviour
+    public class SceneLoader : MonoBehaviour, IGameRestarter
     {
         [SerializeField] private Transform _patrolWaypointsContainer;
         [SerializeField] private Vector3 _playerSpawnPosition;
         [SerializeField] private Vector3 _gundamSpawnPosition;
+        [SerializeField] private EntitiesFactory _entytiesFactory;        
 
-        private EntitiesFactory _entytiesFactory;
+        private Player _player;
+        private GUI _gui;
+
+        private void Start()
+        {
+            _gui = _entytiesFactory.CreateGUI();
+            _gui.RegisterRestarter(this);
+        }
 
         public void Restart()
         {
             RemoveEntities();
             SpawnEntities();
-            CreateUI();
-        }
-
-        private void Start()
-        {
-            _entytiesFactory = GetComponent<EntitiesFactory>();
-            Restart();            
-        }
-
-        private void CreateUI()
-        {
-            _entytiesFactory.CreateGUI();
         }
 
         private void SpawnEntities()
         {
-            _entytiesFactory.CreatePlayer(_playerSpawnPosition);
+            _player = _entytiesFactory.CreatePlayer(_playerSpawnPosition);
+            _gui.RegisterPlayer(_player);
             _entytiesFactory.CreateGundam(_gundamSpawnPosition, GetGundamPatrolPoints());
+            _entytiesFactory.CreateBoxSpawner();
         }
 
         private void RemoveEntities()
@@ -42,7 +40,6 @@ namespace Platformer2D_Task
             RemoveEntitiesOfType<Player>();
             RemoveEntitiesOfType<Gundam>();
             RemoveEntitiesOfType<Box>();
-            RemoveEntitiesOfType<GUI>();
         }
 
         private void RemoveEntitiesOfType<T>() where T : MonoBehaviour

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Platformer2D_Task.UI
@@ -8,19 +9,20 @@ namespace Platformer2D_Task.UI
     {
         protected UIDocument UIDocument;
 
+        public event Action<bool> EnabledChanged;
+
         public abstract MenuType MenuType { get; }
 
         public bool Visible => UIDocument != null ? UIDocument.enabled : false;
 
-
         public void Show()
         {
-            UIDocument.enabled = true;
+            gameObject.SetActive(true);
         }
 
         public void Hide()
         {
-            UIDocument.enabled = false;
+            gameObject.SetActive(false);
         }
 
         protected void Awake()
@@ -28,9 +30,9 @@ namespace Platformer2D_Task.UI
             UIDocument = GetComponent<UIDocument>();
         }
 
-        protected MenuButton CreateButton(string templateContainerName)
+        protected void RaiseEnabledChanged(bool enable)
         {
-            return MenuButton.CreateButton(UIDocument, templateContainerName);
+            EnabledChanged?.Invoke(enable);
         }
     }
 }

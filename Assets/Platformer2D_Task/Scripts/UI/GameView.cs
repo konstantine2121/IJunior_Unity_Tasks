@@ -15,7 +15,7 @@ namespace Platformer2D_Task.UI
 
         public override MenuType MenuType => MenuType.Game;
 
-        private void Awake()
+        private new void Awake()
         {
             base.Awake();
             _playerHpBar = GetComponent<PlayerHpBar>();

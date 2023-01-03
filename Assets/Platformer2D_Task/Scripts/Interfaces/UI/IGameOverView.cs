@@ -1,9 +1,11 @@
-﻿namespace Platformer2D_Task.UI
+﻿using UnityEngine.UIElements;
+
+namespace Platformer2D_Task.UI
 {
     public interface IGameOverView : IBaseMenuView
     {
-        MenuButton Restart { get; }
+        Button Restart { get; }
 
-        MenuButton MainMenu { get; }
+        Button MainMenu { get; }
     }
 }

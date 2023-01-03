@@ -6,8 +6,8 @@
         MainMenu,
         Pause,
         GameOver,
-        Game,
         ExitConfirm,
-        About
+        About,
+        Game
     }
 }

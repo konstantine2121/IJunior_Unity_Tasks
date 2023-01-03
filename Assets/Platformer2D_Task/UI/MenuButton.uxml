@@ -2,7 +2,7 @@
     <Style src="project://database/Assets/Platformer2D_Task/UI/uss/MenuButton.uss?fileID=7433441132597879392&amp;guid=64ad39166ea986f4ebdf7b2c4646a783&amp;type=3#MenuButton" />
     <ui:VisualElement name="ButtonOuterRegion" style="height: 40px; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;">
         <ui:VisualElement name="ButtonInnerRegion" style="height: 35px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;">
-            <ui:Button text="Button" display-tooltip-when-elided="true" name="menu-button" class="menu-button" />
+            <ui:Button text="Button" display-tooltip-when-elided="true" name="menu-button" class="menu-button" style="max-height: 50px; height: 50px; border-top-left-radius: 22px; border-bottom-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

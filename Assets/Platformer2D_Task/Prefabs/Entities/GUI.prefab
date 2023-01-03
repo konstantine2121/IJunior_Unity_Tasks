@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 390946172050043112}
   - component: {fileID: 2439258024639118083}
+  - component: {fileID: 7727987678435067869}
+  - component: {fileID: 3424325338329535117}
   m_Layer: 0
   m_Name: GUI
   m_TagString: Untagged
@@ -48,6 +50,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerHpBar: {fileID: 5270618436898106740}
   _scoreBar: {fileID: 6724463656186577709}
+  _menuContainer: {fileID: 7727987678435067869}
+  _menuController: {fileID: 3424325338329535117}
+--- !u!114 &7727987678435067869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390946172050043115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acdb7379e43a9104599ca61ded28ab79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3424325338329535117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390946172050043115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a1050cc427ca3d4b8d7371b38f10e03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuContainer: {fileID: 7727987678435067869}
+  _restarter: {fileID: 3672312081545772711, guid: 5cce721db065ae641a6875f6a50213c7, type: 3}
 --- !u!1 &2377649090913108541
 GameObject:
   m_ObjectHideFlags: 0
