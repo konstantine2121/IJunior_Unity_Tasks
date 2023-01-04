@@ -52,12 +52,12 @@ namespace Platformer2D_Task
 
         private void OnEnable()
         {
-            _health.MinValueReached += SetDeadState;
+            _health.Died += SetDeadState;
         }
 
         private void OnDisable()
         {
-            _health.MinValueReached -= SetDeadState;
+            _health.Died -= SetDeadState;
         }
 
         private void SetDeadState(Health health, float value)

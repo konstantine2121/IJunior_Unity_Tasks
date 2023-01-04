@@ -86,6 +86,13 @@ namespace Platformer2D_Task
                 dic.Add(pause.MainMenu, OnMainMenuClicked);
                 dic.Add(pause.Resume, OnResumeClicked);
             }
+
+            var gameover = _menuContainer.GameOver;
+            if (gameover != null)
+            {
+                dic.Add(gameover.MainMenu, OnMainMenuClicked);
+                dic.Add(gameover.Restart, OnPlayClicked);
+            }
         }
 
         private void OnResumeClicked()

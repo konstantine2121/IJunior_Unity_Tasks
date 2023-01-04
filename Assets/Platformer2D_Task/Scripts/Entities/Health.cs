@@ -9,7 +9,7 @@ namespace Platformer2D_Task
         public const float MinValue = 0;
 
         public event Action<Health, float> ValueChanged;
-        public event Action<Health, float> MinValueReached;
+        public event Action<Health, float> Died;
         public event Action<Health, bool> InvulnerabilityChanged;
 
         [SerializeField] [Range(1, 10)] float _maxValue;
@@ -41,7 +41,7 @@ namespace Platformer2D_Task
 
                 if (_value == MinValue)
                 {
-                    MinValueReached?.Invoke(this, _value);
+                    Died?.Invoke(this, _value);
                 }
                 else
                 {

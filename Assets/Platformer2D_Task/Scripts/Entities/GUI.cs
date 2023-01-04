@@ -35,6 +35,7 @@ namespace Platformer2D_Task
 
             PlayerHpBar.RegisterHealth(player.Health);
             ScoreBar.RegisterCollector(player.BoxCollector);
+            _menuContainer.GameOver.RegisterCollector(player.BoxCollector);
         }
 
         public void RegisterController(IGameController gameRestarter)
@@ -46,6 +47,7 @@ namespace Platformer2D_Task
         {
             PlayerHpBar.UnregisterHealth();
             ScoreBar.UnregisterCollector();
+            _menuContainer.GameOver.UnregisterCollector();
         }
 
         private void OnEnable()

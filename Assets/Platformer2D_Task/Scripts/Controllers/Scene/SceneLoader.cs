@@ -40,10 +40,27 @@ namespace Platformer2D_Task
 
         private void SpawnEntities()
         {
-            _player = _entytiesFactory.CreatePlayer(_playerSpawnPosition);
-            _gui.RegisterPlayer(_player);
+            SpawnPlayer();
             _entytiesFactory.CreateGundam(_gundamSpawnPosition, GetGundamPatrolPoints());
             _entytiesFactory.CreateBoxSpawner();
+        }
+
+        private void SpawnPlayer()
+        {
+            if (_player != null)
+            {
+                _player.Health.Died -= OnPlayerDied;
+            }
+
+            _player = _entytiesFactory.CreatePlayer(_playerSpawnPosition);
+            _gui.RegisterPlayer(_player);
+            _player.Health.Died += OnPlayerDied;
+        }
+
+        private void OnPlayerDied(Health health, float hp)
+        {
+            Pause();
+            _gui.MenuContainer.ShowScreen(MenuType.GameOver);
         }
 
         private void RemoveEntities()

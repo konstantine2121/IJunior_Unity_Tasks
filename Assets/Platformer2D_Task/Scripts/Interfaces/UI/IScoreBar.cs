@@ -2,8 +2,8 @@
 {
     public interface IScoreBar
     {
-        public void RegisterCollector(BoxCollector health);
+        void RegisterCollector(BoxCollector health);
 
-        public void UnregisterCollector();
+        void UnregisterCollector();
     }
 }
