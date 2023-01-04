@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6c6b3440f1607418da20d5b56b87b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerHpBar: {fileID: 5270618436898106740}
+  _playerHpBar: {fileID: 7011779339526056649}
   _scoreBar: {fileID: 6724463656186577709}
   _menuContainer: {fileID: 7727987678435067869}
   _menuController: {fileID: 3424325338329535117}
@@ -77,7 +77,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _menuContainer: {fileID: 7727987678435067869}
-  _restarter: {fileID: 3672312081545772711, guid: 5cce721db065ae641a6875f6a50213c7, type: 3}
 --- !u!1 &2377649090913108541
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,8 +149,8 @@ GameObject:
   - component: {fileID: 7885716311999144834}
   - component: {fileID: 3489827626846892422}
   - component: {fileID: 6724463656186577709}
-  - component: {fileID: 5270618436898106740}
   - component: {fileID: 7406653829019889664}
+  - component: {fileID: 7011779339526056649}
   m_Layer: 0
   m_Name: GameView
   m_TagString: Untagged
@@ -203,19 +202,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collector: {fileID: 0}
---- !u!114 &5270618436898106740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3305873905130120229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 101f1fba433e15f4f9e434530054eb04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: {fileID: 0}
 --- !u!114 &7406653829019889664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,3 +214,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f74fb005a721542b86233948f3c7be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7011779339526056649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3305873905130120229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101f1fba433e15f4f9e434530054eb04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 0}

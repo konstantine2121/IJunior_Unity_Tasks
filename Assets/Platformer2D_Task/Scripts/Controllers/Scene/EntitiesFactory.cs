@@ -7,10 +7,10 @@ namespace Platformer2D_Task
 {
     public class EntitiesFactory : MonoBehaviour
     {
-        private const string PlayerPrefab = "Player.prefab";
-        private const string GundamPrefab = "Gundam.prefab";
-        private const string GuiPrefab = "GUI.prefab";
-        private const string BoxSpawnerPrefab = "BoxSpawner.prefab";
+        private const string PlayerPrefab = "Player";
+        private const string GundamPrefab = "Gundam";
+        private const string GuiPrefab = "GUI";
+        private const string BoxSpawnerPrefab = "BoxSpawner";
 
         private Player _playerPrefab;
         private Gundam _gundamPrefab;
@@ -80,10 +80,10 @@ namespace Platformer2D_Task
 
         private void GetLinks()
         {
-            _playerPrefab = AssetDatabase.LoadAssetAtPath<Player>(Path.Combine(ResourcesPaths.PrefabsDirPath, PlayerPrefab));
-            _gundamPrefab = AssetDatabase.LoadAssetAtPath<Gundam>(Path.Combine(ResourcesPaths.PrefabsDirPath, GundamPrefab));
-            _guiPrefab = AssetDatabase.LoadAssetAtPath<GUI>(Path.Combine(ResourcesPaths.PrefabsDirPath, GuiPrefab));
-            _boxSpawnerPrefab = AssetDatabase.LoadAssetAtPath<BoxSpawner>(Path.Combine(ResourcesPaths.PrefabsDirPath, BoxSpawnerPrefab));
+            _playerPrefab = Resources.Load<Player>(PlayerPrefab);
+            _gundamPrefab = Resources.Load<Gundam>(GundamPrefab);
+            _guiPrefab = Resources.Load<GUI>(GuiPrefab);
+            _boxSpawnerPrefab = Resources.Load<BoxSpawner>(BoxSpawnerPrefab);
         }
     }
 }
