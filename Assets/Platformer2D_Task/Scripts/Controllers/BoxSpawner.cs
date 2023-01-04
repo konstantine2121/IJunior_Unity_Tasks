@@ -1,14 +1,12 @@
 using SpawnEnemies_Task;
 using System.Collections;
-using System.IO;
-using UnityEditor;
 using UnityEngine;
 
 namespace Platformer2D_Task
 {
     public class BoxSpawner : MonoBehaviour
     {
-        private const string BoxPrefab = "GearBox.prefab";
+        private const string BoxPrefab = "GearBox";
         private const float Interval = 4;
 
         private Box _box;
@@ -77,7 +75,7 @@ namespace Platformer2D_Task
 
         private void GetLink()
         {
-            _box = AssetDatabase.LoadAssetAtPath<Box>(Path.Combine(ResourcesPaths.PrefabsDirPath, BoxPrefab));
+            _box = Resources.Load<Box>(BoxPrefab);
         }
     }
 }

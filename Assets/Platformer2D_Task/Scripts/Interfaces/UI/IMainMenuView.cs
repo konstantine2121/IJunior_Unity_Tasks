@@ -2,10 +2,10 @@
 {
     public interface IMainMenuView : IBaseMenuView
     {
-        ButtonProxy Play { get; }
+        MenuButton Play { get; }
 
-        ButtonProxy About { get; }
+        MenuButton About { get; }
 
-        ButtonProxy Exit { get; }
+        MenuButton Exit { get; }
     }
 }

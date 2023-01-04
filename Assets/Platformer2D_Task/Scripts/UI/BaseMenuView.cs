@@ -7,32 +7,33 @@ namespace Platformer2D_Task.UI
     [RequireComponent(typeof(UIDocument))]
     public abstract class BaseMenuView: MonoBehaviour, IBaseMenuView
     {
-        protected UIDocument UIDocument;
+        protected VisualElement _rootElement;
 
-        public event Action<bool> EnabledChanged;
+        protected VisualElement RootElement 
+        { 
+            get
+            {
+                if (_rootElement == null)
+                {
+                    _rootElement = GetComponent<UIDocument>().rootVisualElement;
+                }
+
+                return _rootElement;
+            }
+        }
 
         public abstract MenuType MenuType { get; }
 
-        public bool Visible => UIDocument != null ? UIDocument.enabled : false;
+        public bool Visible => RootElement.style.display == DisplayStyle.Flex;
 
         public void Show()
         {
-            gameObject.SetActive(true);
+            RootElement.style.display = DisplayStyle.Flex;
         }
 
         public void Hide()
         {
-            gameObject.SetActive(false);
-        }
-
-        protected void Awake()
-        {
-            UIDocument = GetComponent<UIDocument>();
-        }
-
-        protected void RaiseEnabledChanged(bool enable)
-        {
-            EnabledChanged?.Invoke(enable);
+            RootElement.style.display = DisplayStyle.None;
         }
     }
 }
