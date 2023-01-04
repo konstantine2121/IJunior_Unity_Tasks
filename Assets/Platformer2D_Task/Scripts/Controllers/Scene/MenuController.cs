@@ -29,6 +29,7 @@ namespace Platformer2D_Task
             _menuContainer.HideAllScreens();
             _menuContainer.ShowScreen(MenuType.MainMenu);
 
+            InitializeHandlers();
             SubscribeHandlers();
         }
 
@@ -37,8 +38,10 @@ namespace Platformer2D_Task
             UnsubscribeHandlers();
         }
 
-        private void SubscribeHandlers()
+        private void InitializeHandlers()
         {
+            var dic = _buttonsHandlers;
+
             if (_menuContainer == null)
             {
                 return;
@@ -47,28 +50,32 @@ namespace Platformer2D_Task
             var main = _menuContainer.MainMenu;
             if (main != null)
             {
-                main.Play.Clicked += OnPlayClicked;
-                main.About.Clicked += OnAboutClicked;
+                dic.Add(main.Play, OnPlayClicked);
+                dic.Add(main.About, OnAboutClicked);
             }
 
             var about = _menuContainer.About;
             if (about != null)
             {
-                about.MainMenu.Clicked += OnMainMenuClicked;
+                dic.Add(about.MainMenu, OnMainMenuClicked);
+            }
+
+
+        }
+        
+        private void SubscribeHandlers()
+        {
+            foreach (var (button, handler) in _buttonsHandlers)
+            {
+                button.Clicked += handler;
             }
         }
 
         private void UnsubscribeHandlers()
         {
-            if (_menuContainer == null)
+            foreach (var (button, handler) in _buttonsHandlers)
             {
-                return;
-            }
-
-            var main = _menuContainer.MainMenu;
-            if (main != null)
-            {
-                main.Play.Clicked -= OnPlayClicked;
+                button.Clicked -= handler;
             }
         }
 
