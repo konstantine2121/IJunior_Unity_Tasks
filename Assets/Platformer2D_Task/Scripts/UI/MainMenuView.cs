@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using UnityEngine.UIElements;
-
-namespace Platformer2D_Task.UI
+﻿namespace Platformer2D_Task.UI
 {
     public class MainMenuView : BaseMenuView, IMainMenuView
     {

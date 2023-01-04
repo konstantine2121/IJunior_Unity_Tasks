@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Platformer2D_Task.UI;
 using UnityEngine;
 
@@ -6,9 +7,11 @@ namespace Platformer2D_Task
 {
     class MenuController : MonoBehaviour
     {
-        [SerializeField]MenuContainer _menuContainer;
+        [SerializeField]private MenuContainer _menuContainer;
 
         public IGameRestarter Restarter;
+
+        private readonly Dictionary<MenuButton, Action> _buttonsHandlers = new Dictionary<MenuButton, Action>();
 
         /// <summary>
         /// Создаем новый обет меню контроллера.
@@ -45,6 +48,13 @@ namespace Platformer2D_Task
             if (main != null)
             {
                 main.Play.Clicked += OnPlayClicked;
+                main.About.Clicked += OnAboutClicked;
+            }
+
+            var about = _menuContainer.About;
+            if (about != null)
+            {
+                about.MainMenu.Clicked += OnMainMenuClicked;
             }
         }
 
@@ -66,6 +76,16 @@ namespace Platformer2D_Task
         {
             _menuContainer.ShowScreen(MenuType.Game);
             Restarter?.Restart();
+        }
+
+        private void OnAboutClicked()
+        {
+            _menuContainer.ShowScreen(MenuType.About);
+        }
+
+        private void OnMainMenuClicked()
+        {
+            _menuContainer.ShowScreen(MenuType.MainMenu);
         }
     }
 }
