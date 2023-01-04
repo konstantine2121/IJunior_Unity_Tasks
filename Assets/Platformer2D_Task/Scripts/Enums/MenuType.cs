@@ -7,6 +7,7 @@
         Pause,
         GameOver,
         ExitConfirm,
+        MenuConfirm,
         About,
         Game
     }

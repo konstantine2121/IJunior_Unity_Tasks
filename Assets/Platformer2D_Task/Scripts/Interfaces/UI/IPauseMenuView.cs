@@ -4,8 +4,8 @@ namespace Platformer2D_Task.UI
 {
     public interface IPauseMenuView : IBaseMenuView
     {
-        Button Resume { get; }
+        MenuButton Resume { get; }
 
-        Button MainMenu { get; }
+        MenuButton MainMenu { get; }
     }
 }

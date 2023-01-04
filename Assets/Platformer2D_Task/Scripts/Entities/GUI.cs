@@ -37,9 +37,9 @@ namespace Platformer2D_Task
             ScoreBar.RegisterCollector(player.BoxCollector);
         }
 
-        public void RegisterRestarter(IGameRestarter gameRestarter)
+        public void RegisterController(IGameController gameRestarter)
         {
-            _menuController.Restarter = gameRestarter;
+            _menuController.GameController = gameRestarter;
         }
 
         public void UnregisterPlayer()

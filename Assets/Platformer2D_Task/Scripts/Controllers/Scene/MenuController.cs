@@ -8,10 +8,15 @@ namespace Platformer2D_Task
     class MenuController : MonoBehaviour
     {
         [SerializeField]private MenuContainer _menuContainer;
+        [SerializeField]private KeyCode PauseKey = KeyCode.Escape;
 
-        public IGameRestarter Restarter;
+        public IGameController GameController;
 
         private readonly Dictionary<MenuButton, Action> _buttonsHandlers = new Dictionary<MenuButton, Action>();
+
+        private bool OnPause => _menuContainer.GetScreen(MenuType.Pause).Visible;
+
+        private bool InGame => _menuContainer.GetScreen(MenuType.Game).Visible;
 
         /// <summary>
         /// Создаем новый обет меню контроллера.
@@ -31,6 +36,21 @@ namespace Platformer2D_Task
 
             InitializeHandlers();
             SubscribeHandlers();
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(PauseKey)  && (InGame | OnPause))
+            {
+                if (InGame)
+                {
+                    OnPauseClicked();
+                }
+                else                
+                {
+                    OnResumeClicked();
+                }
+            }
         }
 
         private void OnDestroy()
@@ -60,9 +80,26 @@ namespace Platformer2D_Task
                 dic.Add(about.MainMenu, OnMainMenuClicked);
             }
 
-
+            var pause = _menuContainer.PauseMenu;
+            if (pause != null)
+            {
+                dic.Add(pause.MainMenu, OnMainMenuClicked);
+                dic.Add(pause.Resume, OnResumeClicked);
+            }
         }
-        
+
+        private void OnResumeClicked()
+        {
+            GameController.Resume();
+            _menuContainer.ShowScreen(MenuType.Game);
+        }
+
+        private void OnPauseClicked()
+        {
+            GameController?.Pause();
+            _menuContainer.ShowScreen(MenuType.Pause);
+        }
+
         private void SubscribeHandlers()
         {
             foreach (var (button, handler) in _buttonsHandlers)
@@ -82,7 +119,7 @@ namespace Platformer2D_Task
         private void OnPlayClicked()
         {
             _menuContainer.ShowScreen(MenuType.Game);
-            Restarter?.Restart();
+            GameController?.Restart();
         }
 
         private void OnAboutClicked()

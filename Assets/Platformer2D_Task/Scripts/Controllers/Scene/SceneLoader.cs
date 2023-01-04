@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Platformer2D_Task
 {
     [RequireComponent(typeof(EntitiesFactory))]
-    public class SceneLoader : MonoBehaviour, IGameRestarter
+    public class SceneLoader : MonoBehaviour, IGameController
     {
         [SerializeField] private Transform _patrolWaypointsContainer;
         [SerializeField] private Vector3 _playerSpawnPosition;
@@ -18,13 +18,24 @@ namespace Platformer2D_Task
         private void Start()
         {
             _gui = _entytiesFactory.CreateGUI();
-            _gui.RegisterRestarter(this);
+            _gui.RegisterController(this);
         }
 
         public void Restart()
         {
             RemoveEntities();
             SpawnEntities();
+            Resume();
+        }
+
+        public void Pause()
+        {
+            Time.timeScale = 0;
+        }
+
+        public void Resume()
+        {
+            Time.timeScale = 1;
         }
 
         private void SpawnEntities()
