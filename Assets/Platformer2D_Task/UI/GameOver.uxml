@@ -6,10 +6,12 @@
             <ui:Label display-tooltip-when-elided="true" text="Смерть не повод&#10;нарушать присягу!" style="font-size: 60px; height: 151px; width: 739px; -unity-font-style: bold; color: rgb(224, 28, 46); -unity-text-outline-width: 0; -unity-text-outline-color: rgb(229, 31, 31); text-shadow: 0 0 0 rgb(231, 149, 149); border-left-color: rgb(255, 0, 0); border-right-color: rgb(255, 0, 0); border-top-color: rgb(255, 0, 0); border-bottom-color: rgb(255, 0, 0); border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; -unity-font: url(&apos;project://database/Library/unity%20default%20resources?fileID=10102&amp;guid=0000000000000000e000000000000000&amp;type=0#Arial&apos;); background-color: rgba(48, 248, 242, 0.35); -unity-background-scale-mode: stretch-to-fill; -unity-slice-left: 54; -unity-text-align: middle-center; white-space: nowrap;" />
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:VisualElement style="align-items: center; justify-content: flex-end; height: 315px;">
-        <ui:VisualElement style="height: 154px; width: 456px; align-items: center;">
-            <ui:Label text="Собрано ящиков:&#10;" display-tooltip-when-elided="true" style="width: 533px; height: 90px; font-size: 60px; color: rgb(143, 49, 219); -unity-font-style: bold;" />
-            <ui:Label text="00" display-tooltip-when-elided="true" name="score-label" style="font-size: 103px; -unity-font-style: bold; color: rgb(217, 87, 87);" />
+    <ui:VisualElement style="align-items: center; justify-content: flex-end; height: 440px;">
+        <ui:VisualElement style="height: 209px; width: 872px; align-items: center; flex-direction: column-reverse; justify-content: center;">
+            <ui:VisualElement style="flex-direction: row; justify-content: flex-end; align-items: center;">
+                <ui:Label text="Собрано ящиков:&#10;" display-tooltip-when-elided="true" style="width: 533px; height: 90px; font-size: 60px; color: rgb(143, 49, 219); -unity-font-style: bold; margin-right: 67px;" />
+                <ui:Label text="00" display-tooltip-when-elided="true" name="score-label" style="font-size: 80px; -unity-font-style: bold; color: rgb(217, 87, 87);" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement text="Собрано ящиков:" style="align-items: center; justify-content: flex-end; height: 429px;">

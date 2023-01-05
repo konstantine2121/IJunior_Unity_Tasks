@@ -2,8 +2,8 @@
     <ui:Template name="MenuButton" src="project://database/Assets/Platformer2D_Task/UI/MenuButton.uxml?fileID=9197481963319205126&amp;guid=d257c8017400dc94dbf208d8be3316f0&amp;type=3#MenuButton" />
     <ui:VisualElement style="flex-grow: 1; justify-content: space-between; align-items: center;">
         <ui:VisualElement />
-        <ui:VisualElement style="-unity-background-scale-mode: scale-to-fit; background-image: url(&apos;project://database/Assets/Platformer2D_Task/Sprites/Views/gun_abt_ava.png?fileID=2800000&amp;guid=e59f1fb4c881ec24f8358210ca23b4e9&amp;type=3#gun_abt_ava&apos;); background-color: rgba(226, 54, 54, 0); width: 351px; height: 295px;" />
-        <ui:VisualElement style="align-items: center; height: 62px;">
+        <ui:VisualElement style="-unity-background-scale-mode: scale-to-fit; background-image: url(&apos;project://database/Assets/Platformer2D_Task/Sprites/Views/gun_abt_ava.png?fileID=2800000&amp;guid=e59f1fb4c881ec24f8358210ca23b4e9&amp;type=3#gun_abt_ava&apos;); background-color: rgba(226, 54, 54, 0); width: 256px; height: 256px;" />
+        <ui:VisualElement style="align-items: center; height: 80px;">
             <ui:VisualElement style="width: 300px; align-items: stretch;">
                 <ui:Instance template="MenuButton" name="back-button">
                     <AttributeOverrides element-name="menu-button" text="Назад" />

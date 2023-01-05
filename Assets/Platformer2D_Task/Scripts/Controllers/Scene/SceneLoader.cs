@@ -15,6 +15,8 @@ namespace Platformer2D_Task
         private Player _player;
         private GUI _gui;
 
+        private WaitForSeconds _deathActionTimeout = new WaitForSeconds(2);
+
         private void Start()
         {
             _gui = _entytiesFactory.CreateGUI();
@@ -23,9 +25,14 @@ namespace Platformer2D_Task
 
         public void Restart()
         {
-            RemoveEntities();
+            Stop();            
             SpawnEntities();
             Resume();
+        }
+
+        public void Stop()
+        {
+            RemoveEntities();
         }
 
         public void Pause()
@@ -59,6 +66,13 @@ namespace Platformer2D_Task
 
         private void OnPlayerDied(Health health, float hp)
         {
+            StartCoroutine(PerformAfterDeath());
+        }
+
+        private System.Collections.IEnumerator PerformAfterDeath()
+        {
+            yield return _deathActionTimeout;
+
             Pause();
             _gui.MenuContainer.ShowScreen(MenuType.GameOver);
         }

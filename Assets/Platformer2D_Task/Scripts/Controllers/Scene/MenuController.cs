@@ -154,6 +154,7 @@ namespace Platformer2D_Task
 
         private void OnMainMenuClicked()
         {
+            GameController.Stop();
             _menuContainer.ShowScreen(MenuType.MainMenu);
         }
     }
