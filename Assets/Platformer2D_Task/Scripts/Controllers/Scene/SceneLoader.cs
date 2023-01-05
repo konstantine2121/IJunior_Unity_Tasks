@@ -82,6 +82,7 @@ namespace Platformer2D_Task
             RemoveEntitiesOfType<Player>();
             RemoveEntitiesOfType<Gundam>();
             RemoveEntitiesOfType<Box>();
+            RemoveEntitiesOfType<BoxSpawner>();
         }
 
         private void RemoveEntitiesOfType<T>() where T : MonoBehaviour
