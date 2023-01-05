@@ -7,10 +7,10 @@ namespace Platformer2D_Task
     [RequireComponent(typeof(EntitiesFactory))]
     public class SceneLoader : MonoBehaviour, IGameController
     {
+        [SerializeField] private EntitiesFactory _entytiesFactory;        
         [SerializeField] private Transform _patrolWaypointsContainer;
         [SerializeField] private Vector3 _playerSpawnPosition;
         [SerializeField] private Vector3 _gundamSpawnPosition;
-        [SerializeField] private EntitiesFactory _entytiesFactory;        
 
         private Player _player;
         private GUI _gui;
