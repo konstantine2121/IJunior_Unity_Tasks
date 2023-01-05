@@ -6,7 +6,7 @@
         MainMenu,
         Pause,
         GameOver,
-        ExitConfirm,
+        ExitConfirmation,
         MenuConfirm,
         About,
         Game

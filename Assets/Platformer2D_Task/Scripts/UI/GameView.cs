@@ -4,7 +4,7 @@ namespace Platformer2D_Task.UI
 {    
     [RequireComponent(typeof(ScoreBar))]
     [RequireComponent(typeof(PlayerHpBar))]
-    class GameView : BaseMenuView, IGameView
+    public class GameView : BaseMenuView, IGameView
     {
         private PlayerHpBar _playerHpBar;
         private ScoreBar _scoreBar;

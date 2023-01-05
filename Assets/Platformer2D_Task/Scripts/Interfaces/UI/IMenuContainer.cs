@@ -20,7 +20,7 @@
         /// <summary>
         /// Окно подтверждения выхода из игры
         /// </summary>
-        IExitConfirmView ExitConfirm { get; }
+        IExitConfirmationView ExitConfirm { get; }
 
         /// <summary>
         /// Об авторах

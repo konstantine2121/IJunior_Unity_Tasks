@@ -72,6 +72,7 @@ namespace Platformer2D_Task
             {
                 dic.Add(main.Play, OnPlayClicked);
                 dic.Add(main.About, OnAboutClicked);
+                dic.Add(main.Exit, OnGoToExitClicked);
             }
 
             var about = _menuContainer.About;
@@ -93,6 +94,23 @@ namespace Platformer2D_Task
                 dic.Add(gameover.MainMenu, OnMainMenuClicked);
                 dic.Add(gameover.Restart, OnPlayClicked);
             }
+
+            var exit = _menuContainer.ExitConfirm;
+            if (exit != null)
+            {
+                dic.Add(exit.Return, OnMainMenuClicked);
+                dic.Add(exit.Exit, OnExitClicked);
+            }
+        }
+
+        private void OnExitClicked()
+        {
+            Application.Quit();
+        }
+
+        private void OnGoToExitClicked()
+        {
+            _menuContainer.ShowScreen(MenuType.ExitConfirmation);
         }
 
         private void OnResumeClicked()

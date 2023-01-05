@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Effectors_Task.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Platformer2D_Task.unity
+    guid: f7b615caacb364142894b1db7899988d
   m_configObjects: {}

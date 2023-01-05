@@ -1,17 +1,19 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="MenuButton" src="project://database/Assets/Platformer2D_Task/UI/MenuButton.uxml?fileID=9197481963319205126&amp;guid=d257c8017400dc94dbf208d8be3316f0&amp;type=3#MenuButton" />
     <Style src="project://database/Assets/Platformer2D_Task/UI/uss/MainMenu.uss?fileID=7433441132597879392&amp;guid=da4bd315bea1b2141a2b9a1e2125413e&amp;type=3#MainMenu" />
-    <ui:GroupBox style="justify-content: center; -unity-text-align: upper-center; align-items: center;">
-        <ui:GroupBox name="ButtonsContainer" style="width: 400px; justify-content: flex-start; -unity-text-align: upper-left; margin-top: 1px; margin-left: 1px; margin-right: 1px; margin-bottom: 1px; padding-left: 0; padding-right: 0; padding-top: 80px; padding-bottom: 0;">
-            <ui:Instance template="MenuButton" name="play-button" class="main-menu-button">
-                <AttributeOverrides element-name="menu-button" text="Играть" />
-            </ui:Instance>
-            <ui:Instance template="MenuButton" name="about-button" class="main-menu-button" style="padding-bottom: 0;">
-                <AttributeOverrides element-name="menu-button" text="Об авторах." />
-            </ui:Instance>
-            <ui:Instance template="MenuButton" name="exit-button" class="main-menu-button">
-                <AttributeOverrides element-name="menu-button" text="Выход" />
-            </ui:Instance>
-        </ui:GroupBox>
-    </ui:GroupBox>
+    <ui:VisualElement style="justify-content: flex-start; flex-grow: 1;">
+        <ui:VisualElement style="align-items: center; justify-content: center; flex-grow: 1;">
+            <ui:GroupBox name="ButtonsContainer" style="width: 400px; justify-content: flex-start; -unity-text-align: upper-left; margin-top: 1px; margin-left: 1px; margin-right: 1px; margin-bottom: 1px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; height: 400px;">
+                <ui:Instance template="MenuButton" name="play-button" class="main-menu-button">
+                    <AttributeOverrides element-name="menu-button" text="Играть" />
+                </ui:Instance>
+                <ui:Instance template="MenuButton" name="about-button" class="main-menu-button" style="padding-bottom: 0;">
+                    <AttributeOverrides element-name="menu-button" text="Об авторах." />
+                </ui:Instance>
+                <ui:Instance template="MenuButton" name="exit-button" class="main-menu-button">
+                    <AttributeOverrides element-name="menu-button" text="Выход" />
+                </ui:Instance>
+            </ui:GroupBox>
+        </ui:VisualElement>
+    </ui:VisualElement>
 </ui:UXML>

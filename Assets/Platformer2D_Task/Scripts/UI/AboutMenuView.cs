@@ -1,6 +1,6 @@
 ﻿namespace Platformer2D_Task.UI
 {
-    class AboutMenuView : BaseMenuView, IAboutView
+    public class AboutMenuView : BaseMenuView, IAboutView
     {
         private const string BackName = "back-button";
 

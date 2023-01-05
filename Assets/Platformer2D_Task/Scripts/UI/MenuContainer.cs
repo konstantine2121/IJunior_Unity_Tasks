@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Platformer2D_Task.UI
 {
-    class MenuContainer : MonoBehaviour, IMenuContainer
+    public class MenuContainer : MonoBehaviour, IMenuContainer
     {
         private IBaseMenuView[] _menuViews;
 
@@ -17,7 +17,7 @@ namespace Platformer2D_Task.UI
 
         public IGameOverView GameOver { get; private set; }
         
-        public IExitConfirmView ExitConfirm { get; private set; }
+        public IExitConfirmationView ExitConfirm { get; private set; }
         
         public IAboutView About { get; private set; }
         
@@ -87,7 +87,7 @@ namespace Platformer2D_Task.UI
             MainMenu = GetMenu<IMainMenuView>();
             PauseMenu = GetMenu<IPauseMenuView>();
             GameOver = GetMenu<IGameOverView>();
-            ExitConfirm = GetMenu<IExitConfirmView>();
+            ExitConfirm = GetMenu<IExitConfirmationView>();
             About = GetMenu<IAboutView>();
             GameView = GetMenu<IGameView>();
         }
@@ -95,8 +95,7 @@ namespace Platformer2D_Task.UI
         private T GetMenu<T>() 
             where T : class, IBaseMenuView
         {
-            //return _menuViews.First(view => view is T) as T;
-            return _menuViews.FirstOrDefault(view => view is T) as T;
+            return _menuViews.First(view => view is T) as T;
         }
     }
 }

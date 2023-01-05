@@ -1,0 +1,24 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="MenuButton" src="project://database/Assets/Platformer2D_Task/UI/MenuButton.uxml?fileID=9197481963319205126&amp;guid=d257c8017400dc94dbf208d8be3316f0&amp;type=3#MenuButton" />
+    <ui:VisualElement />
+    <ui:VisualElement style="justify-content: center; align-items: center;">
+        <ui:VisualElement style="width: 573px; align-items: center; height: 153px; justify-content: center;">
+            <ui:Label text="Отчаяние — признак слабости." display-tooltip-when-elided="true" style="font-size: 38px; height: 86px; width: 673px; -unity-font-style: bold; color: rgba(250, 51, 103, 0.76); -unity-text-outline-width: 0; -unity-text-outline-color: rgb(229, 31, 31); text-shadow: 0 0 0 rgb(54, 66, 226); border-left-color: rgb(154, 89, 89); border-right-color: rgb(154, 89, 89); border-top-color: rgb(154, 89, 89); border-bottom-color: rgb(154, 89, 89); border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; -unity-font: url(&apos;project://database/Library/unity%20default%20resources?fileID=10102&amp;guid=0000000000000000e000000000000000&amp;type=0#Arial&apos;); background-color: rgba(25, 0, 165, 0.36); -unity-background-scale-mode: stretch-to-fill; -unity-slice-left: 54; -unity-text-align: middle-center; white-space: nowrap;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="height: 100px; min-height: 40px;" />
+        <ui:VisualElement style="height: 196px;">
+            <ui:VisualElement style="height: 253px;" />
+            <ui:Label text="Вы хотите выйти?" display-tooltip-when-elided="true" style="font-size: 88px; color: rgb(149, 202, 77); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; -unity-font-style: bold; -unity-slice-left: 0; -unity-slice-top: 0; -unity-slice-right: 0; -unity-slice-bottom: 0; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; word-spacing: 10px; -unity-text-outline-width: 1px; -unity-text-outline-color: rgba(132, 16, 16, 255);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement style="align-items: center; justify-content: flex-end; height: 429px;">
+        <ui:VisualElement style="width: 400px; justify-content: space-around; height: 197px;">
+            <ui:Instance template="MenuButton" name="return-button">
+                <AttributeOverrides element-name="menu-button" text="Остаться" />
+            </ui:Instance>
+            <ui:Instance template="MenuButton" name="exit-button">
+                <AttributeOverrides element-name="menu-button" text="Выход" />
+            </ui:Instance>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
