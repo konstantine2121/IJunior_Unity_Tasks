@@ -24,7 +24,7 @@ namespace Platformer2D_Task
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.TryGetComponent<Box>(out Box box))
+            if (collision.gameObject.TryGetComponent(out ICollectable collectable))
             {
                 ActivateTriggerMode();
             }

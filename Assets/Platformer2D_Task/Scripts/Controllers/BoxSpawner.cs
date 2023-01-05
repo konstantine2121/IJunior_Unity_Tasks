@@ -7,9 +7,13 @@ namespace Platformer2D_Task
     public class BoxSpawner : MonoBehaviour
     {
         private const string BoxPrefab = "GearBox";
+        private const string MedicalKitPrefab = "MedicalKit";
         private const float Interval = 4;
 
+        [SerializeField][Range(0,100)]private int _medicalKitSpawnChance = 20;
+
         private Box _box;
+        private MedicalKit _medKit;
 
         private int _currentIndex = 0;
         private SpawnZone[] _spawns = new SpawnZone[0];
@@ -20,6 +24,7 @@ namespace Platformer2D_Task
             get
             {
                 return _box != null &&
+                     _medKit != null &&
                     _spawns != null &&
                     _spawns.Length != 0;
             }
@@ -27,7 +32,7 @@ namespace Platformer2D_Task
 
         private void Awake()
         {
-            GetLink();
+            GetLinks();
             _spawns = GetComponentsInChildren<SpawnZone>();
         }
 
@@ -59,8 +64,23 @@ namespace Platformer2D_Task
 
             var position = _spawns[_currentIndex].transform.position;
 
-            Instantiate(_box, position, Quaternion.identity);
+            Instantiate(GetPrefab(), position, Quaternion.identity);
             IncrementIndex();
+        }
+
+        private MonoBehaviour GetPrefab()
+        {
+            return CheckMedkitChance() ?
+                _medKit :
+                _box;
+        }
+
+        private bool CheckMedkitChance()
+        {
+            const int percentage = 100;
+            var number = Random.Range(0, percentage);
+
+            return _medicalKitSpawnChance > number;
         }
 
         private void IncrementIndex()
@@ -73,9 +93,10 @@ namespace Platformer2D_Task
             }
         }
 
-        private void GetLink()
+        private void GetLinks()
         {
             _box = Resources.Load<Box>(BoxPrefab);
+            _medKit = Resources.Load<MedicalKit>(MedicalKitPrefab);
         }
     }
 }

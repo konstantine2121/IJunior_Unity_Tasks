@@ -161,8 +161,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wayPoints:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {x: -7.576344e+31, y: 4.76e-43, z: 0.00000016970151}
+  - {x: 0.00000020991212, y: -3.0895568e-19, z: 4.72e-43}
   _moveSpeed: 2
   _stayOnPointTime: 1
 --- !u!114 &8859032751523480244
@@ -190,4 +190,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageTakersWhiteList: 00000000
-  _damageValue: 3
+  _damageValue: 4

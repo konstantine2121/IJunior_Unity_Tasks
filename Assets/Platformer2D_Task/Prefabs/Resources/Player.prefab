@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 657378915618475487}
   - component: {fileID: 8430400651708470754}
   - component: {fileID: 2358172789229130508}
+  - component: {fileID: -352220235497598149}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -164,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c7b4a7d206d94b42ae1f49fa3fe627f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxValue: 7
+  _maxValue: 10
   _invulnerabilityTime: 1
 --- !u!114 &657378915618475476
 MonoBehaviour:
@@ -236,4 +237,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2981a99afea85804cbc4c6dbf324dc93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startAmountOfCoins: 0
+  _startAmountOfBoxes: 0
+--- !u!114 &-352220235497598149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657378915618475439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cde004cc9f4fbb4d9fe181e2c1d95a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startAmountOfKits: 1
+  _maxAmountOfKits: 2

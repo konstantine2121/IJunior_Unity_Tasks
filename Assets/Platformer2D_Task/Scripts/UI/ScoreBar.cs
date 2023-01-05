@@ -22,7 +22,7 @@ namespace Platformer2D_Task.UI
             if (collector != null)
             {
                 _collector = collector;
-                _collector.NumberOfCoinsChanged += UpdateScore;
+                _collector.NumberOfBoxChanged += UpdateScore;
 
                 UpdateScore(collector.GearBoxes);
             }
@@ -32,7 +32,7 @@ namespace Platformer2D_Task.UI
         {
             if (_collector != null)
             {
-                _collector.NumberOfCoinsChanged -= UpdateScore;
+                _collector.NumberOfBoxChanged -= UpdateScore;
             }
         }
 

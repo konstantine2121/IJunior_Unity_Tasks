@@ -4,22 +4,23 @@ using UnityEngine;
 namespace Platformer2D_Task
 {
     [RequireComponent(typeof(BoxCollider2D))]
-    public class BoxCollector : MonoBehaviour
+    public class MedicalKitCollector : MonoBehaviour
     {
-        private const CollectableTypes TypeToCollect = CollectableTypes.Box;
+        private const CollectableTypes TypeToCollect = CollectableTypes.MedicalKit;
 
-        [SerializeField] private int _startAmountOfBoxes;
+        [SerializeField] private int _startAmountOfKits;
+        [SerializeField] private int _maxAmountOfKits;
 
         private readonly Wallet _wallet = new Wallet();
 
-        public Action<int> NumberOfBoxChanged;            
+        public Action<int> NumberOfKitsChanged;            
 
-        public int GearBoxes => _wallet.NumberOfCoins;
+        public int MedicalKits => _wallet.NumberOfCoins;
 
         void Awake()
         {
-            _wallet.Initialize(_startAmountOfBoxes);
-            _wallet.NumberOfCoinsChanged += (boxes) => NumberOfBoxChanged?.Invoke(boxes);
+            _wallet.Initialize(_startAmountOfKits);
+            _wallet.NumberOfCoinsChanged += (boxes) => NumberOfKitsChanged?.Invoke(boxes);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -34,7 +35,7 @@ namespace Platformer2D_Task
 
         private void TryCollectItem(GameObject gameObject)
         {
-            if (CheckIsCollectable(gameObject, out ICollectable collectable))
+            if (CheckIsCollectable(gameObject, out ICollectable collectable) &&  (MedicalKits < _maxAmountOfKits))
             {
                 Collect(collectable);
             }
@@ -65,9 +66,19 @@ namespace Platformer2D_Task
 
         private void OnValidate()
         {
-            if (_startAmountOfBoxes < 0)
+            if (_startAmountOfKits < 0)
             {
-                _startAmountOfBoxes = 0;
+                _startAmountOfKits = 0;
+            }
+
+            if (_maxAmountOfKits < _startAmountOfKits)
+            {
+                _maxAmountOfKits = _startAmountOfKits;
+            }
+
+            if (_startAmountOfKits > _maxAmountOfKits)
+            {
+                _maxAmountOfKits = _startAmountOfKits;
             }
         }
     }
