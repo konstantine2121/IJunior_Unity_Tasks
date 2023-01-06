@@ -1,0 +1,9 @@
+.medkit-button {
+    flex-direction: row;
+    align-items: center;
+    background-color: rgba(12, 11, 11, 0.39);
+}
+
+.medkit-button-empty {
+    background-color: rgba(190, 64, 64, 255);
+}

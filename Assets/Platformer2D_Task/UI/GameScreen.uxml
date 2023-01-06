@@ -1,9 +1,15 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="PlayerInfoBar" src="project://database/Assets/Platformer2D_Task/UI/PlayerInfoBar.uxml?fileID=9197481963319205126&amp;guid=b3df2414b8b177447b72b67bf27fed48&amp;type=3#PlayerInfoBar" />
     <ui:Template name="ScoreBar" src="project://database/Assets/Platformer2D_Task/UI/ScoreBar.uxml?fileID=9197481963319205126&amp;guid=2f7e7f29678106740baa5f2713a70940&amp;type=3#ScoreBar" />
+    <ui:Template name="MedicalKitBar" src="project://database/Assets/Platformer2D_Task/UI/MedicalKitBar.uxml?fileID=9197481963319205126&amp;guid=417256b06a10ae14dac0ef51bcb9e986&amp;type=3#MedicalKitBar" />
     <ui:GroupBox name="player-ui">
-        <ui:Instance template="PlayerInfoBar" name="PlayerInfoBar">
+        <ui:Instance template="PlayerInfoBar" name="PlayerInfoBar" style="flex-direction: row; align-items: center; justify-content: space-between;">
             <ui:Instance template="ScoreBar" name="ScoreBar" />
         </ui:Instance>
+        <ui:VisualElement>
+            <ui:VisualElement style="margin-top: 19px; width: 296px; left: auto;">
+                <ui:Instance template="MedicalKitBar" name="MedicalKitBar" style="width: 138px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
     </ui:GroupBox>
 </ui:UXML>

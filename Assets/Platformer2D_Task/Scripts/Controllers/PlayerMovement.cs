@@ -21,7 +21,7 @@ namespace Platformer2D_Task
         
         private Rigidbody2D _rigidbody;
         private BoxCollider2D _boxCollider;
-        private Health _health;
+        private IHealth _health;
         private SpriteRenderer _renderer;
         private PlayerStates _state = PlayerStates.Idle;
         
@@ -43,7 +43,7 @@ namespace Platformer2D_Task
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
-            _health = GetComponent<Health>();
+            _health = GetComponent<IHealth>();
             _boxCollider = GetComponent<BoxCollider2D>();
             _renderer = GetComponent<SpriteRenderer>();
 
@@ -60,7 +60,7 @@ namespace Platformer2D_Task
             _health.Died -= SetDeadState;
         }
 
-        private void SetDeadState(Health health, float value)
+        private void SetDeadState(IHealth health, float value)
         {
             State = PlayerStates.Dead;
         }

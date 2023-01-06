@@ -64,7 +64,7 @@ namespace Platformer2D_Task
             _player.Health.Died += OnPlayerDied;
         }
 
-        private void OnPlayerDied(Health health, float hp)
+        private void OnPlayerDied(IHealth health, float hp)
         {
             StartCoroutine(PerformAfterDeath());
         }

@@ -6,9 +6,10 @@ namespace Platformer2D_Task.UI
     [RequireComponent(typeof(UIDocument))]
     public class ScoreBar : MonoBehaviour, IScoreBar
     {
+        private const string ScoreLabelName = "score-label";
         [SerializeField] private BoxCollector _collector;
 
-        private UIDocument _ui;
+        private VisualElement _rootElement;
         private Label _scoreLabel;
 
         public bool CollectorEnabled => _collector != null;
@@ -38,8 +39,8 @@ namespace Platformer2D_Task.UI
 
         private void Awake()
         {
-            _ui = GetComponent<UIDocument>();
-            _scoreLabel = _ui.rootVisualElement.Q<Label>("score-label");
+            _rootElement = GetComponent<UIDocument>().rootVisualElement;
+            _scoreLabel = _rootElement.Q<Label>(ScoreLabelName);
         }
 
         private void OnEnable()

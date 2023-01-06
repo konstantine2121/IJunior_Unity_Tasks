@@ -2,7 +2,7 @@
 {
     public interface IPlayerHpBar
     {
-        public void RegisterHealth(Health health);
+        public void RegisterHealth(IHealth health);
 
         public void UnregisterHealth();
     }

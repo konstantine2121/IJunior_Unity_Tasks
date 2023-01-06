@@ -12,7 +12,7 @@ namespace Platformer2D_Task
 
         private readonly Wallet _wallet = new Wallet();
 
-        public Action<int> NumberOfBoxChanged;            
+        public event Action<int> NumberOfBoxChanged;            
 
         public int GearBoxes => _wallet.NumberOfCoins;
 

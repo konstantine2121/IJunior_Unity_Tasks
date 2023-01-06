@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f79c504e404b83947b47cc491ff46328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _medicalKitSpawnChance: 20
+  _medicalKitSpawnChance: 50
 --- !u!1 &3623194823601102347
 GameObject:
   m_ObjectHideFlags: 0

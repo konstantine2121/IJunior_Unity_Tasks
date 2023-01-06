@@ -6,10 +6,16 @@ namespace Platformer2D_Task
     [RequireComponent(typeof(BoxCollider2D))]
     public class MedicalKit : BaseCollectable
     {
+        public const float DefaultHealValue = 3;
+
+        [SerializeField][Range(0,10)]private float _amountOfHeal = DefaultHealValue;
+
         private Rigidbody2D _rigidbody;
         private BoxCollider2D _collider;
 
         public override CollectableTypes CollectableType => CollectableTypes.MedicalKit;
+
+        public float AmountOfHeal => _amountOfHeal;
 
         private void Awake()
         {

@@ -8,7 +8,7 @@ namespace Platformer2D_Task
     {
         [SerializeField]private Color _affectedColor;
 
-        private Health _health;
+        private IHealth _health;
         private SpriteRenderer _renderer;
 
         private Color _defaultColor;
@@ -31,7 +31,7 @@ namespace Platformer2D_Task
             _health.InvulnerabilityChanged -= InvulnerabilityChanged;
         }
 
-        private void InvulnerabilityChanged(Health health, bool invulnerability)
+        private void InvulnerabilityChanged(IHealth health, bool invulnerability)
         {
             _renderer.color = invulnerability ?
                 _affectedColor :

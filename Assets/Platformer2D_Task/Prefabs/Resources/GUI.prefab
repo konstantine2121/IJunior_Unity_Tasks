@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerHpBar: {fileID: 7011779339526056649}
+  _medicalKitBar: {fileID: 550212654620082925}
   _scoreBar: {fileID: 6724463656186577709}
   _menuContainer: {fileID: 7727987678435067869}
   _menuController: {fileID: 3424325338329535117}
@@ -156,6 +157,7 @@ GameObject:
   - component: {fileID: 6724463656186577709}
   - component: {fileID: 7406653829019889664}
   - component: {fileID: 7011779339526056649}
+  - component: {fileID: 550212654620082925}
   m_Layer: 0
   m_Name: GameView
   m_TagString: Untagged
@@ -232,6 +234,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 0}
+--- !u!114 &550212654620082925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3305873905130120229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ba8cbe52f61ad4f843ee773505b86c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collector: {fileID: 0}
 --- !u!1 &3637922350063057424
 GameObject:
   m_ObjectHideFlags: 0

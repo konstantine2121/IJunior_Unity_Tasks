@@ -1,26 +1,52 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Platformer2D_Task
 {
     [RequireComponent(typeof(BoxCollider2D))]
-    public class MedicalKitCollector : MonoBehaviour
+    public class MedicalKitCollector : MonoBehaviour, IMedicalKitCollector
     {
         private const CollectableTypes TypeToCollect = CollectableTypes.MedicalKit;
 
         [SerializeField] private int _startAmountOfKits;
         [SerializeField] private int _maxAmountOfKits;
 
-        private readonly Wallet _wallet = new Wallet();
+        private readonly Queue<float> _medkits = new Queue<float>();
 
-        public Action<int> NumberOfKitsChanged;            
+        public event Action<int> NumberOfKitsChanged;            
 
-        public int MedicalKits => _wallet.NumberOfCoins;
+        public int MedicalKits => _medkits.Count;
+
+        public int MaxMedicalKits => _maxAmountOfKits;
+
+        public float UseMedicalKit()
+        {
+            var heal = 0f;
+
+            if (_medkits.Count > 0)
+            {
+                heal = _medkits.Dequeue();
+                NumberOfKitsChanged?.Invoke(_medkits.Count);
+            }
+
+            return heal;
+        }
 
         void Awake()
         {
-            _wallet.Initialize(_startAmountOfKits);
-            _wallet.NumberOfCoinsChanged += (boxes) => NumberOfKitsChanged?.Invoke(boxes);
+            InitializeMedkits();
+        }
+
+        private void InitializeMedkits()
+        {
+            _medkits.Clear();
+
+            for (int i=0; i< _startAmountOfKits; i++)
+            {
+                _medkits.Enqueue(MedicalKit.DefaultHealValue);
+            }
+            NumberOfKitsChanged?.Invoke(_medkits.Count);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -35,13 +61,13 @@ namespace Platformer2D_Task
 
         private void TryCollectItem(GameObject gameObject)
         {
-            if (CheckIsCollectable(gameObject, out ICollectable collectable) &&  (MedicalKits < _maxAmountOfKits))
+            if (CheckIsCollectable(gameObject, out MedicalKit collectable) &&  (MedicalKits < _maxAmountOfKits))
             {
                 Collect(collectable);
             }
         }
 
-        private bool CheckIsCollectable(GameObject gameObject, out ICollectable collectable)
+        private bool CheckIsCollectable(GameObject gameObject, out MedicalKit collectable)
         {
             if (gameObject.TryGetComponent(out collectable))
             {
@@ -51,15 +77,15 @@ namespace Platformer2D_Task
             return false;
         }
 
-        private void Collect(ICollectable collectable)
+        private void Collect(MedicalKit collectable)
         {
             if (collectable.CollectableType != TypeToCollect)
             {
                 return;
             }
 
-            var coins = collectable.NumberOfObjects;
-            _wallet.PutCoins(coins);
+            _medkits.Enqueue(collectable.AmountOfHeal);
+            NumberOfKitsChanged?.Invoke(_medkits.Count);
 
             collectable.Take();
         }

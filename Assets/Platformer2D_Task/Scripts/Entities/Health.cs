@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace Platformer2D_Task
 {
-    public class Health : MonoBehaviour, IDamageTaker
+    public class Health : MonoBehaviour, IHealth
     {
         public const float MinValue = 0;
 
-        public event Action<Health, float> ValueChanged;
-        public event Action<Health, float> Died;
-        public event Action<Health, bool> InvulnerabilityChanged;
+        public event Action<IHealth, float> ValueChanged;
+        public event Action<IHealth, float> Died;
+        public event Action<IHealth, bool> InvulnerabilityChanged;
 
         [SerializeField] [Range(1, 10)] float _maxValue;
         [SerializeField] [Range(1, 5)] float _invulnerabilityTime = 3;
@@ -30,12 +30,13 @@ namespace Platformer2D_Task
             private set
             {
                 var valueChanged = _value != value;
-                _value = value;
-
                 if (valueChanged == false)
                 {
                     return;
                 }
+
+                var oldValue = _value;
+                _value = value;
 
                 ValueChanged?.Invoke(this, _value);
 
@@ -45,7 +46,10 @@ namespace Platformer2D_Task
                 }
                 else
                 {
-                    StartInvulnerability();
+                    if (_value < oldValue)
+                    {
+                        StartInvulnerability();
+                    }
                 }
             }
         }
@@ -80,6 +84,11 @@ namespace Platformer2D_Task
             {
                 Value = (float)Mathf.MoveTowards(Value, MinValue, Mathf.Abs(damage));
             }
+        }
+
+        public void TakeHeal(float heal)
+        {
+            Value = (float)Mathf.MoveTowards(Value, MaxValue, Mathf.Abs(heal));
         }
 
         public void Kill()

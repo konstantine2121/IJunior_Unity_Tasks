@@ -7,11 +7,12 @@ namespace Platformer2D_Task
     public class GUI : MonoBehaviour
     {
         [SerializeField] private PlayerHpBar _playerHpBar;
+        [SerializeField] private MedicalKitBar _medicalKitBar;
         [SerializeField] private ScoreBar _scoreBar;
         [SerializeField] private MenuContainer _menuContainer;
         [SerializeField] private MenuController _menuController;
 
-        private Player _player;
+        private IPlayer _player;
 
         public IPlayerHpBar PlayerHpBar => _playerHpBar;
 
@@ -19,7 +20,9 @@ namespace Platformer2D_Task
 
         public IMenuContainer MenuContainer => _menuContainer;
 
-        public void RegisterPlayer(Player player)
+        public IMedicalKitBar MedicalKitBar => _medicalKitBar;
+
+        public void RegisterPlayer(IPlayer player)
         {
             if (_player != null)
             {
@@ -35,6 +38,8 @@ namespace Platformer2D_Task
 
             PlayerHpBar.RegisterHealth(player.Health);
             ScoreBar.RegisterCollector(player.BoxCollector);
+            MedicalKitBar.RegisterCollector(player.MedicalKitCollector);
+            MedicalKitBar.RegisterHealTarget(player.Health);
             _menuContainer.GameOver.RegisterCollector(player.BoxCollector);
         }
 
@@ -47,6 +52,8 @@ namespace Platformer2D_Task
         {
             PlayerHpBar.UnregisterHealth();
             ScoreBar.UnregisterCollector();
+            MedicalKitBar.UnregisterCollector();
+            MedicalKitBar.UnregisterHealTarget();
             _menuContainer.GameOver.UnregisterCollector();
         }
 

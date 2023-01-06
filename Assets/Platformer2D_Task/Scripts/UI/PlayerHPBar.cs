@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -6,12 +7,18 @@ namespace Platformer2D_Task.UI
     [RequireComponent(typeof(UIDocument))]
     public class PlayerHpBar : MonoBehaviour, IPlayerHpBar
     {
-        [SerializeField] private Health _health;
+        private const float CoroutineDelay = 0.05f;
+        private const string HealthBarName = "health-bar";
 
-        private UIDocument _ui;
+        [SerializeField] private IHealth _health;
+
+        private VisualElement _rootElement;
         private VisualElement _healthBar;
+        private WaitForSeconds _delay = new WaitForSeconds(CoroutineDelay);
+        private float _increaseRate = 4f;
 
-        public void RegisterHealth(Health health)
+
+        public void RegisterHealth(IHealth health)
         {
             UnregisterHealth();
 
@@ -34,8 +41,8 @@ namespace Platformer2D_Task.UI
 
         private void Awake()
         {
-            _ui = GetComponent<UIDocument>();
-            _healthBar = _ui.rootVisualElement.Q<VisualElement>("health-bar");
+            _rootElement = GetComponent<UIDocument>().rootVisualElement;
+            _healthBar = _rootElement.Q<VisualElement>(HealthBarName);
         }
 
         private void OnEnable()
@@ -48,7 +55,7 @@ namespace Platformer2D_Task.UI
             UnregisterHealth();
         }
 
-        private void UpdateHP(Health health, float value)
+        private void UpdateHP(IHealth health, float value)
         {
             if (health == null)
             {
@@ -58,7 +65,7 @@ namespace Platformer2D_Task.UI
             var maxHealth = health.MaxValue;
             var percentage = value / maxHealth * 100;
 
-            _healthBar.style.width = new Length(percentage, LengthUnit.Percent);
+            StartCoroutine(ChangeHealthValue(percentage));
         }
 
         private void OnValidate()
@@ -71,6 +78,24 @@ namespace Platformer2D_Task.UI
             {
                 UnregisterHealth();
             }
+        }
+
+        private float GetHealthPercentage()
+        {
+            return _healthBar.style.width.value.value;
+        }
+
+        private IEnumerator ChangeHealthValue(float percentage)
+        {
+            do
+            {
+               _healthBar.style.width = new Length(
+                   Mathf.MoveTowards(GetHealthPercentage(), percentage, _increaseRate),
+                   LengthUnit.Percent);
+
+                yield return _delay;
+            }
+            while (GetHealthPercentage() != percentage);
         }
     }
 }

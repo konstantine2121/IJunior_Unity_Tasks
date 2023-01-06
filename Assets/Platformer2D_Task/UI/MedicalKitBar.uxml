@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Platformer2D_Task/UI/uss/MedkitButton.uss?fileID=7433441132597879392&amp;guid=0f5229dd989758e47b00473be50e9626&amp;type=3#MedkitButton" />
+    <ui:VisualElement style="left: auto; height: 40px; width: auto; flex-shrink: 0;">
+        <ui:Button display-tooltip-when-elided="true" name="medkit-button" class="medkit-button" style="background-color: rgba(178, 103, 103, 0.2); flex-shrink: 0; height: 36px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;">
+            <ui:VisualElement style="background-image: url(&apos;project://database/Assets/Platformer2D_Task/Sprites/Collectables/MedicalKit.png?fileID=2800000&amp;guid=40d3f7d7938e9c0459ddb8cc75f6a392&amp;type=3#MedicalKit&apos;); width: 32px; height: 32px;" />
+            <ui:VisualElement>
+                <ui:Label text="0 / 0" display-tooltip-when-elided="true" name="medkit-label" style="font-size: 26px; margin-left: 30px; -unity-font-style: bold;" />
+            </ui:VisualElement>
+        </ui:Button>
+    </ui:VisualElement>
+</ui:UXML>

@@ -48,7 +48,6 @@ namespace CatBurglar_Task
             {
                 _audioSource.Stop();
             }
-
         }
     }
 }
