@@ -88,6 +88,21 @@ namespace Platformer2D_Task.UI
 
             var text = value.ToString() + "/" + _medkitContainer.MaxMedicalKits;
             _scoreLabel.text = text;
+
+            SetButtonColor(value);
+        }
+
+        private void SetButtonColor(int value)
+        {
+            var alpha = 0.2f;
+            Color backColor = new Color(1,0,0,alpha);
+
+            if (value > 0)
+            {
+                backColor = new Color(0, 1, 0, alpha);
+            }
+
+            MedicalKitButton.style.backgroundColor = new StyleColor(backColor);
         }
 
         private void OnValidate()
