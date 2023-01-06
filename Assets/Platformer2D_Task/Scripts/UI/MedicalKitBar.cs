@@ -60,6 +60,7 @@ namespace Platformer2D_Task.UI
             MedicalKitButton = _rootElement.Q<Button>(MedkitButtonName);
 
             MedicalKitButton.clicked += OnMedicalKitButtonClicked;
+            MedicalKitButton.focusable = false;
         }
 
         private void OnMedicalKitButtonClicked()

@@ -17,7 +17,6 @@ namespace Platformer2D_Task.UI
         private WaitForSeconds _delay = new WaitForSeconds(CoroutineDelay);
         private float _increaseRate = 4f;
 
-
         public void RegisterHealth(IHealth health)
         {
             UnregisterHealth();
