@@ -50,7 +50,6 @@ namespace Platformer2D_Task.UI
         public void UnregisterHealTarget()
         {
             _healTarget = null;
-
         }
 
         private void Awake()
@@ -65,8 +64,8 @@ namespace Platformer2D_Task.UI
 
         private void OnMedicalKitButtonClicked()
         {
-            var heal = _medkitContainer.UseMedicalKit();
-            _healTarget.TakeHeal(heal);
+            var heal = (float)(_medkitContainer?.UseMedicalKit());
+            _healTarget?.TakeHeal(heal);
         }
 
         private void OnEnable()
@@ -95,7 +94,7 @@ namespace Platformer2D_Task.UI
         private void SetButtonColor(int value)
         {
             var alpha = 0.2f;
-            Color backColor = new Color(1,0,0,alpha);
+            var backColor = new Color(1,0,0,alpha);
 
             if (value > 0)
             {
