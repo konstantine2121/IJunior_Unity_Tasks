@@ -175,7 +175,7 @@ namespace Platformer2D_Task
 
             var contacts = new List<ContactPoint2D>();
             collision.GetContacts(contacts);
-
+            
             return contacts.All(contact => Mathf.Abs(contact.point.y - bottom) <= delta);
         }
     }

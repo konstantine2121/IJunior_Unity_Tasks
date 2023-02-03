@@ -15,7 +15,7 @@ namespace Platformer2D_Task
         private Player _player;
         private GUI _gui;
 
-        private WaitForSeconds _deathActionTimeout = new WaitForSeconds(2);
+        private WaitForSeconds _deathActionTimeout = new WaitForSeconds(10);
 
         private void Start()
         {

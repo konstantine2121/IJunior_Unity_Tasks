@@ -13,6 +13,8 @@ namespace Platformer2D_Task
 
         private PlayerMovement _movement;
         private Animator _animator;
+        private AnimationState _death;
+
 
         private bool Run
         {
@@ -30,6 +32,8 @@ namespace Platformer2D_Task
         {
             _movement = GetComponent<PlayerMovement>();
             _animator = GetComponent<Animator>();
+            _animator.fireEvents = true;
+            
         }
 
         private void OnEnable()
