@@ -12,6 +12,7 @@ namespace Platformer2D_Task.UI
 
         [SerializeField] private IHealth _health;
 
+        private Coroutine _healthUpdater;
         private VisualElement _rootElement;
         private VisualElement _healthBar;
         private WaitForSeconds _delay = new WaitForSeconds(CoroutineDelay);
@@ -64,7 +65,12 @@ namespace Platformer2D_Task.UI
             var maxHealth = health.MaxValue;
             var percentage = value / maxHealth * 100;
 
-            StartCoroutine(ChangeHealthValue(percentage));
+            if (_healthUpdater != null)
+            {
+                StopCoroutine(_healthUpdater);
+            }
+
+            _healthUpdater = StartCoroutine(ChangeHealthValue(percentage));
         }
 
         private void OnValidate()
@@ -95,6 +101,8 @@ namespace Platformer2D_Task.UI
                 yield return _delay;
             }
             while (GetHealthPercentage() != percentage);
+
+            _healthUpdater = null;
         }
     }
 }
