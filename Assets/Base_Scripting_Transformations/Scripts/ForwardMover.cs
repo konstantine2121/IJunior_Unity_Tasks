@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Assets.Base_Scripting_Transformations.Scripts
 {
-    public class FrontMover : MonoBehaviour
+    public class ForwardMover : MonoBehaviour
     {
         [SerializeField][Range(0, 5)] private float _moveSpeed;
         
