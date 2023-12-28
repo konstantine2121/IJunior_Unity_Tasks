@@ -2,7 +2,8 @@ using UnityEngine;
 
 namespace Assets.Base_Scripting_Transformations.Scripts
 {
-    public class Mover : MonoBehaviour
+    //Невнимательно прочитал задание, поэтому этот скрипт можно не проверять.
+    public class Patroller : MonoBehaviour
     {
         private const float MinTargetOffset = 0.00001f;
         [SerializeField] private Vector3 _targetPoint = Vector3.zero;
@@ -11,7 +12,7 @@ namespace Assets.Base_Scripting_Transformations.Scripts
         private Vector3 _startPoint = Vector3.zero;
         private Direction _direction = Direction.ToTarget;
 
-        private void Start () 
+        private void Awake()
         {
             _startPoint = transform.position;
         }
