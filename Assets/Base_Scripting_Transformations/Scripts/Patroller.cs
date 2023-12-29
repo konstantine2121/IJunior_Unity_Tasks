@@ -1,8 +1,8 @@
-using UnityEngine;
+п»їusing UnityEngine;
 
 namespace Assets.Base_Scripting_Transformations.Scripts
 {
-    //Невнимательно прочитал задание, поэтому этот скрипт можно не проверять.
+    //РќРµРІРЅРёРјР°С‚РµР»СЊРЅРѕ РїСЂРѕС‡РёС‚Р°Р» Р·Р°РґР°РЅРёРµ, РїРѕСЌС‚РѕРјСѓ СЌС‚РѕС‚ СЃРєСЂРёРїС‚ РјРѕР¶РЅРѕ РЅРµ РїСЂРѕРІРµСЂСЏС‚СЊ.
     public class Patroller : MonoBehaviour
     {
         private const float MinTargetOffset = 0.00001f;

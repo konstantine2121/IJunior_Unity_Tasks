@@ -9,7 +9,15 @@ namespace Assets.Base_Scripting_Transformations.Scripts
         [SerializeField] [Range(1,2)] private float _targetScale = 1;
         [SerializeField] [Range(0, 1)] private float _scaleSpeed;
 
-        private ScaleOperation _scaleDirection = ScaleOperation.Increase;
+        private ScaleOperation _scaleOperation = ScaleOperation.Increase;
+
+        private enum ScaleOperation
+        {
+            Increase,
+            Decrease
+        }
+
+        private bool Increase => _scaleOperation == ScaleOperation.Increase;
 
         private void Update()
         {
@@ -18,26 +26,40 @@ namespace Assets.Base_Scripting_Transformations.Scripts
 
         private void Scale()
         {
-            var scaleSpeed = _scaleSpeed * Time.deltaTime;
-        //    var scaleMultiplier = 1 
-            Vector3 scaleDleta = 
+            if(_targetScale == BaseScale)
+            {
+                return;
+            }
 
+            var scale = transform.localScale.x;
+            var scaleDelta = _scaleSpeed * Time.deltaTime;
+            var targetScale = Increase ? _targetScale : BaseScale;
+
+            var maxScaleDelta = Mathf.Abs(targetScale - scale);
+            scaleDelta = Mathf.Min(scaleDelta, maxScaleDelta);
             
-            transform.localScale = transform.localScale ;
+            var newScale = scale + (Increase ? scaleDelta : -scaleDelta);
+
+            transform.localScale = new Vector3(newScale, newScale, newScale);
+
+            if (AlmostEquals(newScale, targetScale))
+            {
+                SwitchScaleOperation();
+            }
         }
 
-
-        private void SwitchDirection()
+        private bool AlmostEquals(float a, float b)
         {
-            _scaleDirection = _scaleDirection == ScaleOperation.Increase ?
+            const float accuracy = 0.0000001f;
+
+            return Mathf.Abs(a - b) < accuracy;
+        }
+
+        private void SwitchScaleOperation()
+        {
+            _scaleOperation = Increase ?
                 ScaleOperation.Decrease :
                 ScaleOperation.Increase;
-        }
-
-        private enum ScaleOperation
-        {
-            Increase,
-            Decrease
-        }
+        }        
     }
 }
