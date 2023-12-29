@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace Assets.Base_Scripting_Transformations.Scripts
 {
-    //Невнимательно прочитал задание, поэтому этот скрипт можно не проверять.
     public class LoopScaler : MonoBehaviour
     {
         private const float BaseScale = 1f;
