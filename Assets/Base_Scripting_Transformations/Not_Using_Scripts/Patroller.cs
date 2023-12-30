@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Base_Scripting_Transformations.Scripts
+namespace Assets.Base_Scripting_Transformations.Not_Using_Scripts
 {
     //Невнимательно прочитал задание, поэтому этот скрипт можно не проверять.
     public class Patroller : MonoBehaviour
@@ -31,8 +31,8 @@ namespace Assets.Base_Scripting_Transformations.Scripts
 
             var position = transform.position;
             var distance = _moveSpeed * Time.deltaTime;
-            var targetPoint = _direction == Direction.ToTarget ? 
-                _targetPoint : 
+            var targetPoint = _direction == Direction.ToTarget ?
+                _targetPoint :
                 _startPoint;
 
             var maxDistance = Vector3.Distance(position, targetPoint);
